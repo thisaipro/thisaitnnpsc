@@ -90,6 +90,37 @@
     if (menu) $$("a", menu).forEach(function (a) { a.addEventListener("click", closeM); });
   }
 
+  /* ---------------- scroll reveal (general) ---------------- */
+  function initReveal() {
+    var sel = ".card, .course-card, .post, .prog-block, .diag-output, .guar-terms, .faq-item, .free-cta-card, .free-feats li, .tier-list li, .detail-list > div, .lead-magnet-copy, .form-card";
+    var els = $$(sel).filter(function (el) { return !el.closest(".hero"); });
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) return; // no JS reveal → stay visible
+    var counts = {};
+    els.forEach(function (el) {
+      el.classList.add("reveal");
+      var pid = (el.parentElement && el.parentElement.className) || "x";
+      counts[pid] = (counts[pid] || 0);
+      el.style.setProperty("--d", (counts[pid] % 6) * 70 + "ms");
+      counts[pid]++;
+    });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------------- preselect register interest ---------------- */
+  function initPreselect() {
+    $$("[data-preselect-interest]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var key = el.getAttribute("data-preselect-interest");
+        var sel = $("#r-interest"); if (!sel) return;
+        for (var i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].getAttribute("data-i18n") === key) { sel.selectedIndex = i; break; }
+        }
+      });
+    });
+  }
+
   /* ---------------- diagnostic reveal ---------------- */
   function initDiag() {
     var layers = $$(".diag-layer"); if (!layers.length) return;
@@ -155,7 +186,7 @@
 
   /* ---------------- init ---------------- */
   document.addEventListener("DOMContentLoaded", function () {
-    loadGA(); bindLinks(); bindSeats(); initCountdown(); initAnnc(); initMenu(); initDiag(); initBlogFilters();
+    loadGA(); bindLinks(); bindSeats(); initCountdown(); initAnnc(); initMenu(); initDiag(); initReveal(); initPreselect(); initBlogFilters();
     initForm("form-register", { event: "batch_register" });
     initForm("form-leadmagnet", {
       event: "leadmagnet_signup",
