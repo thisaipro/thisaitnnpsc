@@ -301,6 +301,18 @@ html[lang="ta"] .filter-btn { font-family: var(--font-ta); }
 .post-date { font-size:.8rem; color: var(--mute); margin-top:auto; }
 .sample-note { background: var(--gold-lt); border:1px dashed var(--gold); border-radius: var(--rad); padding:14px 16px; font-size:.9rem; color: var(--gold-dk); margin-top: 20px; }
 
+/* blog admin */
+.admin-bar { display:none; align-items:center; flex-wrap:wrap; gap:12px; background: var(--ink); color:#eaf1fb; border-radius: var(--rad-lg); padding:14px 18px; margin-top:22px; }
+.admin-bar.show { display:flex; }
+.admin-bar .admin-badge { background: linear-gradient(150deg,var(--gold-hi),var(--gold)); color:var(--ink); font-weight:800; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; padding:5px 10px; border-radius:3px; }
+.admin-bar .admin-who { font-size:.9rem; color:#c7d4e6; margin-right:auto; }
+.composer { display:none; background:#fff; border:1px solid var(--line); border-radius: var(--rad-lg); box-shadow: var(--shadow); padding:22px; margin-top:16px; }
+.composer.show { display:block; }
+.composer textarea { width:100%; padding:12px 14px; font-size:15px; font-family:var(--font-body); border:1.5px solid #cfd6de; border-radius:var(--rad); min-height:120px; resize:vertical; }
+.composer .out { width:100%; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12px; background:var(--paper-2); border:1px solid var(--line); border-radius:var(--rad); padding:12px; min-height:120px; white-space:pre; overflow:auto; }
+.post.draft { outline:2px dashed var(--gold); }
+.post .draft-flag { background:var(--gold-lt); color:var(--gold-dk); border:1px solid var(--gold); font-size:.66rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; padding:3px 7px; border-radius:3px; }
+
 /* -------------------------------------------------------------- FAQ */
 .faq { margin-top:24px; display:grid; grid-template-columns:minmax(0,1fr); gap:10px; }
 .faq-item { background:#fff; border:1px solid var(--line); border-radius: var(--rad); overflow:hidden; }
@@ -325,8 +337,14 @@ html[lang="ta"] .filter-btn { font-family: var(--font-ta); }
 .site-footer { background: var(--ink); color:#c4d1e2; padding:46px 0 28px; }
 .footer-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; }
 @media (min-width:760px){ .footer-grid { grid-template-columns:1.6fr 1fr 1fr; } }
-.footer-logo { background:#fff; border-radius: var(--rad); padding:10px 12px; display:inline-block; }
-.footer-logo img { height:40px; display:block; }
+.footer-logo { background:#fff; border-radius: var(--rad); padding:10px 14px; display:inline-flex; align-items:center; gap:12px; }
+.footer-logo img.fl-mark { height:44px; width:44px; display:block; border-radius:50%; }
+.footer-logo img.fl-word { height:32px; width:auto; display:block; }
+/* round-badge seal (used on light backgrounds) */
+.seal { width:96px; height:96px; border-radius:50%; display:block; box-shadow: var(--shadow-sm); }
+.hero-card .seal { margin:-56px auto 10px; border:4px solid #fff; background:#fff; }
+.seal-row { display:flex; align-items:center; gap:16px; margin-bottom:8px; }
+.seal-row .seal { width:76px; height:76px; }
 .footer-note { font-size:.88rem; margin:12px 0 0; color:#94a6bc; max-width:40ch; }
 .footer-col h4 { color:#fff; font-size:1rem; margin:0 0 12px; font-family: var(--font-body); font-weight:700; }
 .footer-col a { display:block; color:#c4d1e2; text-decoration:none; font-size:.92rem; padding:4px 0; }
@@ -344,7 +362,7 @@ html[lang="ta"] .filter-btn { font-family: var(--font-ta); }
 .modal-scrim { position: fixed; inset: 0; background: rgba(10,23,48,.6); backdrop-filter: blur(2px); }
 .modal-card { position: relative; background:#fff; width: 100%; max-width: 440px; border-radius: var(--rad-lg); box-shadow: var(--shadow); padding: 28px; margin-top: 4vh; }
 .modal-close { position:absolute; top:12px; right:14px; background:none; border:0; font-size:1.7rem; line-height:1; cursor:pointer; color: var(--mute); }
-.modal-logo { height: 42px; display:block; margin: 0 auto 14px; }
+.modal-logo { height: 40px; width: auto; display:block; margin: 0 auto 14px; }
 .auth-tabs { display:flex; background: var(--paper-2); border-radius: var(--pill); padding:4px; margin: 0 0 20px; }
 .auth-tab { flex:1; border:0; background:none; padding:9px; border-radius: var(--pill); font-weight:800; color: var(--mute); cursor:pointer; font-family: var(--font-body); font-size:.95rem; }
 .auth-tab.active { background: var(--navy); color:#fff; }

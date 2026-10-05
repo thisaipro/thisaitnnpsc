@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Noto+Sans+Tamil:wght@400;500;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" />
+  <link rel="icon" href="assets/favicon-180.png" sizes="180x180" />
   <link rel="apple-touch-icon" href="assets/favicon-180.png" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -95,6 +95,39 @@
 
         <!-- Honest note: these are placeholders, not fabricated news. -->
         <div class="sample-note" data-i18n="bp.sample">These are sample/template posts showing the layout. Replace them with real articles — see blog.html for where to add posts. Nothing here is fabricated news; each is clearly a placeholder until the team publishes real content.</div>
+
+        <!-- ADMIN TOOLBAR (shown only to super admins — see config.SUPER_ADMINS & js/blog-admin.js) -->
+        <div class="admin-bar" id="admin-bar">
+          <span class="admin-badge">Super Admin</span>
+          <span class="admin-who"></span>
+          <button type="button" class="btn btn-gold btn-sm" id="admin-write">✍️ Write / publish post</button>
+        </div>
+
+        <div class="composer" id="composer">
+          <h3>Write a post</h3>
+          <form id="composer-form" class="lead-form">
+            <div class="field"><label for="c-title">Title</label><input id="c-title" type="text" required placeholder="Post title" /></div>
+            <div class="field row2">
+              <div class="field" style="gap:6px"><label for="c-cat">Category</label>
+                <select id="c-cat"><option value="ca">Current Affairs</option><option value="article">Article</option><option value="update">Exam Update</option></select></div>
+              <div class="field" style="gap:6px"><label for="c-date">Date label</label><input id="c-date" type="text" placeholder="e.g. 5 Oct 2026" /></div>
+            </div>
+            <div class="field"><label for="c-excerpt">Excerpt / summary</label><textarea id="c-excerpt" required placeholder="A short summary shown on the card"></textarea></div>
+            <div class="field"><label for="c-url">Read-more link (optional)</label><input id="c-url" type="url" placeholder="https://… (leave blank for #)" /></div>
+            <div class="contact-cta-row">
+              <button type="submit" class="btn btn-navy" data-action="draft">Save as local draft</button>
+              <button type="submit" class="btn btn-gold" data-action="html">Generate publish HTML</button>
+            </div>
+          </form>
+          <div id="composer-out-wrap" style="display:none;margin-top:16px">
+            <p class="form-micro" style="margin-bottom:8px">Paste this into <code>blog.html</code> (inside <code>&lt;div class="blog-grid"&gt;</code>) and deploy to publish for everyone — or wire a CMS/backend (see README).</p>
+            <pre class="out" id="composer-out"></pre>
+            <div class="contact-cta-row" style="margin-top:10px">
+              <button type="button" class="btn btn-ghost btn-sm" id="composer-copy">Copy HTML</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="composer-download">Download .html</button>
+            </div>
+          </div>
+        </div>
 
         <!-- ============================================================
              POSTS
@@ -192,7 +225,7 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <span class="footer-logo"><img src="assets/logo-horizontal.png" alt="Thisai IAS Academy" width="2000" height="1000" /></span>
+          <span class="footer-logo"><img class="fl-mark" src="assets/logo-badge.webp" alt="" aria-hidden="true" width="44" height="44" /><img class="fl-word" src="assets/logo-horizontal.png" alt="Thisai IAS Academy" width="2000" height="1000" /></span>
           <p class="footer-note" data-i18n="foot.note">Erode's own serious, outcome-driven TNPSC academy — AI diagnostics, serving-officer mentorship, and a combined Group 1, 2 & 4 program on Sakthi Road.</p>
         </div>
         <div class="footer-col"><h4 data-i18n="foot.explore">Explore</h4>
@@ -261,5 +294,6 @@
   <script src="js/i18n.js" defer></script>
   <script src="js/auth.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/blog-admin.js" defer></script>
 </body>
 </html>

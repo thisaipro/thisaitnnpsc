@@ -66,8 +66,16 @@
         slot.appendChild(btn);
       }
     });
+    document.dispatchEvent(new CustomEvent("thisai:authchange", { detail: { user: user, admin: isAdmin() } }));
   }
   function escapeHtml(s) { return (s || "").replace(/[&<>"']/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]; }); }
+
+  // Role check (FRONT-END only — not security; enforce on the backend too).
+  function isAdmin() {
+    var u = getUser(); if (!u) return false;
+    var list = (window.THISAI_CONFIG && window.THISAI_CONFIG.SUPER_ADMINS) || [];
+    return list.map(function (x) { return (x || "").toLowerCase(); }).indexOf((u.email || "").toLowerCase()) >= 0;
+  }
 
   /* ---------- modal ---------- */
   function open(tab) {
@@ -176,5 +184,5 @@
     document.addEventListener("thisai:langchange", renderAuthState);
   });
 
-  window.ThisaiAuth = { open: open, close: close, getUser: getUser, signOut: clearSession };
+  window.ThisaiAuth = { open: open, close: close, getUser: getUser, signOut: clearSession, isAdmin: isAdmin };
 })();
