@@ -1,183 +1,131 @@
-# Thisai IAS Academy — Landing Site
+# Thisai IAS Academy — Website
 
-A single-page, mobile-first marketing site for **Thisai IAS Academy** — a TNPSC
-Group 1 / 2 / 4 combined coaching academy launching in Erode, Tamil Nadu.
+A fast, mobile-first, **bilingual (English / Tamil)** marketing + lead-gen site for
+**Thisai IAS Academy**, Erode — TNPSC Group 1/2/4 coaching, a Group 4 test series, and
+free UPSC mentorship.
 
-**Primary conversion goal:** Scholarship Test registrations (test date **Sept 15, 2026**).
-**Secondary goal:** lead-magnet capture (free Group 4 2024 solved paper) to follow up
-with visitors not yet ready to register.
+**Live programs & key dates**
+- **Batch 1** — TNPSC Group 1, 2 & 4 combined course — **starts Nov 2, 2026**
+- **Group 4 Test Series** — **starts Oct 20, 2026**
+- **Free UPSC Civil Services mentorship** — merit-based, guided by UPSC interview-stage candidates
+
+**Conversion goals:** register interest (Batch 1 / Test Series / UPSC) and capture leads
+with the free Group 4 2024 solved paper.
 
 ---
 
-## Stack
+## Stack & pages
 
-Plain **static HTML + CSS + vanilla JS** — no framework, no build step. Chosen so the
-page stays tiny and fast on mid-range Android phones over Tier-2 mobile data (Lighthouse
-mobile target 90+). Deploys as flat files anywhere.
+Plain **static HTML + CSS + vanilla JS**, no build step — tuned for Lighthouse-mobile on
+mid-range Android over Tier-2 data. Three pages share one stylesheet and one set of scripts:
 
 ```
-index.html        # the whole page
-config.js         # EDIT THIS — all swappable values (numbers, endpoint, phone, seats)
-css/styles.css    # styles (civil-service navy + brass gold + diagnostic teal)
-js/main.js        # countdown, forms, validation, WhatsApp, analytics, reveal
-js/i18n.js        # EN/Tamil toggle stub (Tamil strings to be dropped in later)
-assets/           # favicon.svg, og-image.svg + exported og-image.png (1200x630)
+index.html        # home: hero, programs, diagnostics, guarantee, register + lead-magnet, FAQ, contact
+courses.html      # Courses & Test Series (combined course, Group 4 test series, UPSC mentorship)
+blog.html         # Blog, Articles & Current Affairs (category filter + sample/template posts)
+
+config.js         # EDIT THIS — dates, WhatsApp, form endpoint, seats, analytics, maps
+css/styles.css    # brand design system (navy #0d2f6b + brass gold, Newsreader headings)
+js/i18n.js        # English/Tamil dictionary + engine (data-i18n), persists choice
+js/auth.js        # sign in / sign up modal (front-end demo — swap in a real backend)
+js/main.js        # countdown, announcement rotator, mobile menu, forms, analytics
+assets/           # logo-horizontal.png, logo-badge.webp, favicons, og-image.png
+vercel.json       # forces a no-build static deploy
 ```
 
 ---
 
 ## Run locally
 
-It's static, so any static server works. From the project root:
+Static — serve over http:// (not file://) so the countdown and Google Map work:
 
 ```bash
-# Python (no install)
-python3 -m http.server 8080
-# then open http://localhost:8080
-
-# …or Node
-npx serve .
+python3 -m http.server 8080      # then open http://localhost:8080
+# or: npx serve .
 ```
 
-> Open it over **http://**, not by double-clicking the file. Two features need a real
-> origin: the **server-time-safe countdown** (reads the `Date` response header) and the
-> **Google Maps embed**. They degrade gracefully otherwise (countdown falls back to the
-> device clock; map shows a placeholder).
+## Deploy (Netlify / Vercel — no build step)
+
+Publish directory = repo root. `vercel.json` already forces a static deploy (this repo
+previously failed with a leftover `vue-cli-service build` command). On Vercel set
+**Framework Preset = Other** and leave Build Command empty; on Netlify set build command
+to none. After deploying, update the absolute URLs in each page's `<head>`
+(`og:image`, `og:url`, `canonical`) to your real domain.
 
 ---
 
-## Deploy (Netlify or Vercel — both free for this size)
+## ✅ Features built
 
-There is **no build step**. Publish directory = the repo root.
-
-- **Netlify:** drag the folder onto app.netlify.com, or connect the repo (build command:
-  _none_; publish directory: `/`).
-- **Vercel:** `vercel` from the project root, or import the repo as a static project
-  (framework preset: **Other**).
-
-After deploying, update the absolute URLs in `index.html` (`og:image`, `og:url`,
-`canonical`) to your real domain so social previews and SEO resolve correctly.
+- **Brand applied** — official torch wordmark (`assets/logo-horizontal.png`) in header,
+  footer and auth modal; circular seal as favicon + hero watermark; exact brand palette
+  (navy `#0d2f6b`, brass gold `#b8861f`/`#d9ae4a`) and Newsreader serif headings.
+- **Announcement bar** — auto-rotating, with all three launches (reduced-motion safe).
+- **Sign in / Sign up** — accessible modal from every page's header, tabbed, with client
+  validation and a signed-in header pill + sign-out. See **Auth backend** below.
+- **Full Tamil version** — real EN⇄தமிழ் toggle (top-right), translating all pages; choice
+  is remembered. Tamil renders in Noto Sans Tamil. Extend by adding keys to `js/i18n.js`.
+- **Server-time-safe countdown** to Nov 2, 2026 (anchors to the origin `Date` header,
+  falls back to device clock).
+- **Two forms** — "Register interest" (name, phone, interest, status) and the lighter
+  lead-magnet (name + WhatsApp). Client validation, single-`fetch` submit, success states.
+- **Courses & Test Series page** and **Blog/Articles/Current Affairs page** (with working
+  category filter and clearly-labelled sample posts — no fabricated news).
+- **Floating WhatsApp**, lazy-loaded Google Map, SEO (single H1 per page, meta, structured
+  data), OG/Twitter cards, GA4 event stubs, honest seats indicator (hidden by default).
 
 ---
 
-## ⚠️ Before you go live — fill these in
+## Auth backend (IMPORTANT before launch)
 
-Everything below ships as an obvious placeholder. Copy-level unknowns render **on the
-page** as dashed gold tokens like `{{SCHOLARSHIP_TIER_1}}` so they can't be missed;
-functional values live in **`config.js`**.
+`js/auth.js` is a **front-end demo**: it validates input and remembers a session in the
+browser's `localStorage`, but provides **no real security** (no server, no password storage).
+Replace the two functions marked `TODO: real backend` with a real provider — both have free
+tiers and need no server:
 
-### 1. Edit `config.js`
+- **Firebase Authentication** — `createUserWithEmailAndPassword` / `signInWithEmailAndPassword`
+- **Supabase Auth** — `supabase.auth.signUp` / `signInWithPassword`
+
+Keep the `setSession(...)` / `renderAuthState()` UI calls; only swap the network part.
+
+---
+
+## Before you go live — fill these in
+
+**In `config.js`:**
 | Key | What to set |
 |---|---|
-| `WHATSAPP_NUMBER` | Real WhatsApp number, digits only, no `+` (e.g. `919876543210`). Powers the floating button + all WhatsApp CTAs. |
-| `PHONE_DISPLAY` | Public phone number as shown on the page. |
-| `FORM_ENDPOINT` | Your Formspree endpoint (or other — see **Forms** below). Until set, forms run in **demo mode** (validate + show success, send nothing). |
-| `LEAD_MAGNET_LINK` | Hosted link to the free Group 4 2024 solved paper PDF. |
-| `TEST_DATE_ISO` | Confirm the Scholarship Test date/time (drives the countdown). |
-| `SEATS_REMAINING` | A **real** integer someone maintains, or leave `null` to hide it. Never fake scarcity. |
-| `GA4_MEASUREMENT_ID` | GA4 ID (`G-XXXX`) to enable analytics, or leave empty. |
-| `MAPS_EMBED_SRC` | Paste the exact "Embed a map" iframe `src` from Google Maps to pin the building; else it auto-builds a keyless embed from the address. |
+| `WHATSAPP_NUMBER` | Real number, digits only, no `+` (e.g. `919876543210`). |
+| `PHONE_DISPLAY` | Public phone number shown on the page. |
+| `FORM_ENDPOINT` | Formspree endpoint (or Sheets/serverless). Until set, forms run in **demo mode** (validate + success, send nothing). |
+| `LEAD_MAGNET_LINK` | Hosted link to the free Group 4 2024 solved paper. |
+| `COUNTDOWN_ISO` / `TEST_SERIES_ISO` / `BATCH1_DATE_ISO` | Confirm dates (Nov 2 / Oct 20). |
+| `SEATS_REMAINING` | A real integer someone maintains, or `null` to hide it (never fake scarcity). |
+| `GA4_MEASUREMENT_ID` | GA4 id to enable analytics, or empty. |
+| `MAPS_EMBED_SRC` | Paste the Google Maps "Embed a map" src to pin the exact building. |
 
-### 2. Replace the on-page copy tokens (search `{{` in `index.html`)
-These are **[confirm] items from the content doc** — do **not** invent them:
-`{{SCHOLARSHIP_TIER_1}}` · `{{SCHOLARSHIP_TIER_2}}` · `{{SCHOLARSHIP_TIER_3}}` ·
-`{{SEAT_CAP}}` · `{{TEST_PATTERN}}` · `{{REGISTRATION_DEADLINE}}` · `{{BATCH_FEE}}` ·
-`{{GUARANTEE_ATTENDANCE_PCT}}` · `{{GUARANTEE_COMPLETION_PCT}}` · `{{GUARANTEE_WEEKS}}` ·
-`{{GUARANTEE_REFUND_TERMS}}`
+**On-page `{{TOKENS}}`** (search `{{` across the HTML) — these are [confirm] items, shown as
+visible dashed chips so they can't be missed; do **not** invent them:
+`{{SCHOLARSHIP_TIER_1/2/3}}`, `{{SEAT_CAP}}`, `{{REGISTRATION_DEADLINE}}`, `{{BATCH_FEE}}`,
+`{{TEST_SERIES_FEE}}`, `{{GUARANTEE_ATTENDANCE_PCT}}`, `{{GUARANTEE_COMPLETION_PCT}}`,
+`{{GUARANTEE_WEEKS}}`, `{{GUARANTEE_REFUND_TERMS}}`, and the phone (via config).
 
-> The **Progress Guarantee** headline and its conditions are intentionally in the same
-> section — keep them together. The guarantee copy is **pending legal review** (flagged
-> on-page); don't publish undefined refund terms.
-
-### 3. Social preview image
-`assets/og-image.png` (1200×630) is generated from `assets/og-image.svg`. It's a solid
-starting design — swap in a final branded PNG if you have one, and make sure the
-`og:image` meta points at its **absolute** URL on your domain (WhatsApp/Instagram need a
-raster image at an absolute URL).
+**Other:** the Progress Guarantee is **pending legal review** (flagged on-page). The
+social image `assets/og-image.png` (1200×630) is generated from `assets/og-image.svg` —
+re-export if you change it, and point `og:image` at its absolute URL.
 
 ---
 
 ## Forms
 
-Both forms do client-side validation (name + Indian mobile number), submit as JSON, and
-show a success state. The submit is a **single `fetch()`** in `js/main.js → submitForm()`.
+Both forms POST JSON via one `fetch()` in `js/main.js → submitForm()`. A `_form` field
+distinguishes submissions. Options: **Formspree** (paste endpoint in config), **Google
+Sheets via Apps Script**, or **any serverless function**. Lead-magnet delivery captures the
+contact first, then auto-sends the link (via the form tool's autoresponder); the success
+state also surfaces `config.LEAD_MAGNET_LINK` as a fallback.
 
-**Option A — Formspree (simplest, no backend):**
-1. Create a free form at [formspree.io](https://formspree.io).
-2. Put its endpoint in `config.js → FORM_ENDPOINT`.
-3. Both forms post to it; a `_form` field distinguishes *Scholarship Test Registration*
-   from *Lead Magnet* submissions. Configure Formspree's autoresponder to send the
-   lead-magnet link.
+## Compliance notes
 
-**Option B — Google Sheets (via Apps Script):**
-1. In a Google Sheet: **Extensions → Apps Script**, paste:
-   ```js
-   function doPost(e){
-     var data = JSON.parse(e.postData.contents);
-     var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Leads');
-     sh.appendRow([new Date(), data._form, data.name, data.phone, data.target_group||'', data.current_status||'']);
-     return ContentService.createTextOutput(JSON.stringify({ok:true})).setMimeType(ContentService.MimeType.JSON);
-   }
-   ```
-2. **Deploy → New deployment → Web app**, access "Anyone", copy the `/exec` URL.
-3. Put that URL in `config.js → FORM_ENDPOINT`.
-
-**Option C — your own serverless function** (Vercel/Netlify function, Cloudflare Worker):
-point `FORM_ENDPOINT` at any URL that accepts a `POST` with a JSON body.
-
-**Delivery of the lead magnet:** we capture the contact first, then auto-send the paper
-link (via the form tool's autoresponder / a WhatsApp automation). The success state also
-surfaces the link from `config.LEAD_MAGNET_LINK` as a fallback.
-
----
-
-## What's built
-
-**Must-haves**
-- Hero with Erode-local hook, primary CTA, and a **server-time-safe countdown** (anchors
-  to the origin's `Date` header, tracks with a monotonic offset, falls back to the device
-  clock).
-- **Scholarship Test form** — 4 fields only (name, phone/WhatsApp, target group, current
-  status) + WhatsApp-slot microcopy + success state.
-- **Lead-magnet form** — name + WhatsApp only; link delivered after capture, not a live
-  download.
-- All content-doc sections in order: Hero → Erode-local → Why Thisai → The Program → AI
-  Diagnostic Engine (4-layer visual with scroll reveal) → Mentorship → Doubt-Clearing →
-  Personalised Plan → Progress Guarantee (with conditions) → Scholarship Test + form →
-  Batch 1 → FAQ → Contact + Google Map.
-- Floating WhatsApp button (pre-filled message), visible at all scroll positions.
-- Mobile-first, responsive; largest asset (map iframe) is lazy-loaded so it never blocks
-  first paint.
-- Client validation + working submit handler + visible success states on both forms.
-- On-page SEO: single H1, semantic HTML, meta title/description targeting "TNPSC coaching
-  Erode", `EducationalOrganization` structured data, image alt text / `aria` labels.
-- **No fabricated** testimonials, student counts, or reviews. The social-proof slot is a
-  commented-out `TODO` placeholder for real Batch 1 results.
-
-**Nice-to-haves**
-- EN/Tamil language **toggle** (mechanism + English strings shipped; Tamil dictionary is a
-  clearly-marked stub in `js/i18n.js` — fill `STRINGS.ta` to finish).
-- **FAQ accordion** (native `<details>`).
-- **Seats remaining** — honest only: shows solely when `config.SEATS_REMAINING` is a real
-  number; hidden by default.
-- **Analytics** — GA4 events `scholarship_register` and `leadmagnet_signup` when a
-  Measurement ID is set (logs to console otherwise, so you can verify locally).
-- **Open Graph / Twitter** cards for WhatsApp/Instagram shares.
-
----
-
-## Design direction
-
-**Civil-service navy + brass gold, with a diagnostic-teal data accent.** Deep institutional
-navy and warm brass signal a serious government-exam institution (not ed-tech SaaS); teal
-is reserved for the AI Diagnostic Engine so the differentiator reads as its own
-"instrument." Type: **Fraunces** (serif display, institutional authority) over **Public
-Sans** (clean, civic, highly legible on small screens). All colours are CSS variables at
-the top of `css/styles.css`.
-
-## Accessibility & performance notes
-
-- Single `<h1>`, logical heading order, `aria-live` on the countdown and form success,
-  visible focus rings, `prefers-reduced-motion` disables the reveal animation.
-- No web-font blocking beyond two families (preconnected, `display=swap`, few weights).
-- No JS dependencies; ~one small stylesheet and one small script.
+Mentors are described only as "serving Group 1, Group 2, Group 4 and IFoS officers" — no
+individual names/ranks/postings. No fabricated testimonials, student counts or reviews; the
+blog's sample posts are clearly labelled placeholders. The guarantee headline always shows
+its conditions in the same section.
