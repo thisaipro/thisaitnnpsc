@@ -87,6 +87,25 @@ tiers and need no server:
 
 Keep the `setSession(...)` / `renderAuthState()` UI calls; only swap the network part.
 
+## Admin & roles (blog writing / publishing)
+
+Emails in `config.js → SUPER_ADMINS` get a **writing/publishing toolbar on
+`blog.html`** when signed in with that email. Currently:
+`thisaiiasofficial@gmail.com` (super admin + blog author).
+
+- **Save as local draft** — previews the post at the top of the grid (this
+  browser only).
+- **Generate publish HTML** — outputs a ready-to-paste `<article>` block. To
+  publish for everyone on this static site, paste it into `blog.html` (inside
+  `<div class="blog-grid">`) and deploy — or copy/download it.
+
+⚠️ This role gate is **front-end convenience, not security** (anyone editing the
+JS could show the toolbar, and "publishing" still goes through your deploy).
+For a real multi-author CMS with enforced roles, pair the auth backend above
+with server-side rules: **Firebase** custom claims (`admin: true`) + Firestore/
+Storage security rules, or **Supabase** a `profiles.role` column + Row-Level-
+Security policies. Store posts in that database and render them on `blog.html`.
+
 ---
 
 ## Before you go live — fill these in
@@ -103,11 +122,14 @@ Keep the `setSession(...)` / `renderAuthState()` UI calls; only swap the network
 | `GA4_MEASUREMENT_ID` | GA4 id to enable analytics, or empty. |
 | `MAPS_EMBED_SRC` | Paste the Google Maps "Embed a map" src to pin the exact building. |
 
-**On-page `{{TOKENS}}`** (search `{{` across the HTML) — these are [confirm] items, shown as
-visible dashed chips so they can't be missed; do **not** invent them:
-`{{SCHOLARSHIP_TIER_1/2/3}}`, `{{SEAT_CAP}}`, `{{REGISTRATION_DEADLINE}}`, `{{BATCH_FEE}}`,
-`{{TEST_SERIES_FEE}}`, `{{GUARANTEE_ATTENDANCE_PCT}}`, `{{GUARANTEE_COMPLETION_PCT}}`,
-`{{GUARANTEE_WEEKS}}`, `{{GUARANTEE_REFUND_TERMS}}`, and the phone (via config).
+**Confirmed & set:** official phone `+91 93455 12955`, WhatsApp `919345512955`,
+email `thisaiiasofficial@gmail.com`, registration deadline **Oct 15, 2026**, and
+scholarship tiers **90% / 60% / 30%**.
+
+**Still-open on-page `{{TOKENS}}`** (search `{{` across the HTML) — [confirm] items shown
+as visible dashed chips so they can't be missed; do **not** invent them:
+`{{SEAT_CAP}}`, `{{BATCH_FEE}}`, `{{TEST_SERIES_FEE}}`, `{{GUARANTEE_ATTENDANCE_PCT}}`,
+`{{GUARANTEE_COMPLETION_PCT}}`, `{{GUARANTEE_WEEKS}}`, `{{GUARANTEE_REFUND_TERMS}}`.
 
 **Other:** the Progress Guarantee is **pending legal review** (flagged on-page). The
 social image `assets/og-image.png` (1200×630) is generated from `assets/og-image.svg` —

@@ -8,9 +8,9 @@
 window.THISAI_CONFIG = {
 
   /* --- 1. CONTACT / WHATSAPP (digits only, no "+") --- */
-  WHATSAPP_NUMBER: "9100000000000",              // {{WHATSAPP_NUMBER}} [confirm]
-  PHONE_DISPLAY:   "+91 00000 00000",            // {{PHONE_NUMBER}}    [confirm]
-  EMAIL:           "tnpsc@thisai.pro",
+  WHATSAPP_NUMBER: "919345512955",               // official WhatsApp
+  PHONE_DISPLAY:   "+91 93455 12955",            // official phone
+  EMAIL:           "thisaiiasofficial@gmail.com",// official email
   WHATSAPP_MSG_FLOATING:  "Hi, I want to know more about Batch 1 and the Group 4 Test Series.",
   WHATSAPP_MSG_LEADMAGNET:"Hi! Please send me the free TNPSC Group 4 2024 solved question paper (Tamil).",
   WHATSAPP_MSG_COURSES:   "Hi, I'd like guidance on which Thisai program fits me.",
@@ -37,5 +37,16 @@ window.THISAI_CONFIG = {
 
   /* --- 7. GOOGLE MAPS --- */
   MAPS_QUERY: "Thisai IAS Academy, Sakthi Road, Near Erode Bus Stand, Erode 638001",
-  MAPS_EMBED_SRC: "" // paste an "Embed a map" iframe src to pin the exact building
+  MAPS_EMBED_SRC: "", // paste an "Embed a map" iframe src to pin the exact building
+
+  /* --- 8. ADMIN / ROLES ---
+     Emails listed here are treated as SUPER ADMINS and get the blog
+     writing/publishing tools (on blog.html) when signed in with that email.
+     NOTE: this is a FRONT-END role check for the demo auth. It is NOT security.
+     For real access control, enforce roles on the backend:
+       • Firebase: custom claims (admin:true) + Firestore/Storage rules
+       • Supabase: a `profiles.role` column + Row-Level-Security policies
+     See README "Admin & roles". */
+  SUPER_ADMINS: ["thisaiiasofficial@gmail.com"],
+  BLOG_AUTHORS: ["thisaiiasofficial@gmail.com"]
 };
