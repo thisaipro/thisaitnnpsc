@@ -108,6 +108,25 @@ Security policies. Store posts in that database and render them on `blog.html`.
 
 ---
 
+## Group 4 pages & funnel
+
+- **`group4.html`** — "Target Group 4 Exam" (in the main menu). The full 13-section
+  preparation-system page (at-a-glance, syllabus, method, daily routine, what-you-get,
+  journey timeline, personas, why-Thisai), with a **countdown to the Jan 10, 2027 exam**
+  and two lead magnets: the **Free Group 4 Diagnostic Test** and the **Free Prep Kit**
+  (name + WhatsApp). Built as the lead magnet for classes & the test series.
+- **`group4-ad.html`** — a distraction-light **ad landing page** (`noindex`) for paid
+  campaigns: problem→solution, what-you-get, Free Kit form, Free Diagnostic Test, batch
+  offer, final CTA. Funnel: Free Kit (cold) → Diagnostic Test (interested) → Counsellor
+  (high-intent) → Batch.
+- **Diagnostic test** (`js/group4-quiz.js`): 15-minute timer, instant readiness %, per-
+  section strength/weakness, then lead capture. **The question bank is editable sample
+  content** (aptitude is self-checking; a few well-established GS/Tamil facts) — replace
+  it with your own vetted 25-question bank before launch. Ad links can auto-open it with
+  `group4.html#test`.
+- Exam date / vacancies (`Jan 10, 2027` · `6,574`) live in `config.js` (`G4_EXAM_ISO`,
+  `G4_VACANCIES`) and the page copy — **verify against the official TNPSC notification.**
+
 ## Before you go live — fill these in
 
 **In `config.js`:**

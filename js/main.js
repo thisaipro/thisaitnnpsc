@@ -25,7 +25,7 @@
   /* ---------------- links (whatsapp / phone / map) ---------------- */
   function waLink(msg) { return "https://wa.me/" + (CFG.WHATSAPP_NUMBER || "").replace(/[^\d]/g, "") + "?text=" + encodeURIComponent(msg || ""); }
   function bindLinks() {
-    var waMap = { floating: "WHATSAPP_MSG_FLOATING", leadmagnet: "WHATSAPP_MSG_LEADMAGNET", courses: "WHATSAPP_MSG_COURSES", ca: "WHATSAPP_MSG_CA" };
+    var waMap = { floating: "WHATSAPP_MSG_FLOATING", leadmagnet: "WHATSAPP_MSG_LEADMAGNET", courses: "WHATSAPP_MSG_COURSES", ca: "WHATSAPP_MSG_CA", g4kit: "WHATSAPP_MSG_G4KIT", g4test: "WHATSAPP_MSG_G4TEST", counsellor: "WHATSAPP_MSG_COUNSELLOR" };
     $$("[data-wa]").forEach(function (el) { var key = el.getAttribute("data-wa"); el.href = waLink(CFG[waMap[key]] || CFG.WHATSAPP_MSG_FLOATING); });
     $$("[data-phone-display]").forEach(function (el) { el.textContent = CFG.PHONE_DISPLAY || el.textContent; });
     $$("[data-phone-link]").forEach(function (el) { el.href = "tel:" + (CFG.PHONE_DISPLAY || "").replace(/[^\d+]/g, ""); });
@@ -53,7 +53,8 @@
   /* ---------------- countdown ---------------- */
   function initCountdown() {
     var root = $("#countdown"); if (!root) return;
-    var target = new Date(CFG.COUNTDOWN_ISO || "2026-11-02T09:00:00+05:30").getTime();
+    var customNote = root.getAttribute("data-note");
+    var target = new Date(root.getAttribute("data-target") || CFG.COUNTDOWN_ISO || "2026-11-02T09:00:00+05:30").getTime();
     var out = { days: $('[data-cd="days"]', root), hours: $('[data-cd="hours"]', root), mins: $('[data-cd="mins"]', root), secs: $('[data-cd="secs"]', root) };
     var note = $("[data-cd-src]", root);
     function pad(n) { return (n < 10 ? "0" : "") + n; }
@@ -65,7 +66,7 @@
       out.hours.textContent = pad(Math.floor((s % 86400) / 3600));
       out.mins.textContent = pad(Math.floor((s % 3600) / 60));
       out.secs.textContent = pad(s % 60);
-      if (note) note.textContent = timeVerified ? t("cd.verify") : t("cd.plain");
+      if (note) note.textContent = customNote ? customNote : (timeVerified ? t("cd.verify") : t("cd.plain"));
     }
     render(); syncServerTime().then(render); setInterval(render, 1000);
   }
@@ -88,6 +89,37 @@
     $$("[data-menu-close]").forEach(function (b) { b.addEventListener("click", closeM); });
     if (scrim) scrim.addEventListener("click", closeM);
     if (menu) $$("a", menu).forEach(function (a) { a.addEventListener("click", closeM); });
+  }
+
+  /* ---------------- scroll reveal (general) ---------------- */
+  function initReveal() {
+    var sel = ".card, .course-card, .post, .prog-block, .diag-output, .guar-terms, .faq-item, .free-cta-card, .free-feats li, .tier-list li, .detail-list > div, .lead-magnet-copy, .form-card";
+    var els = $$(sel).filter(function (el) { return !el.closest(".hero"); });
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) return; // no JS reveal → stay visible
+    var counts = {};
+    els.forEach(function (el) {
+      el.classList.add("reveal");
+      var pid = (el.parentElement && el.parentElement.className) || "x";
+      counts[pid] = (counts[pid] || 0);
+      el.style.setProperty("--d", (counts[pid] % 6) * 70 + "ms");
+      counts[pid]++;
+    });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------------- preselect register interest ---------------- */
+  function initPreselect() {
+    $$("[data-preselect-interest]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var key = el.getAttribute("data-preselect-interest");
+        var sel = $("#r-interest"); if (!sel) return;
+        for (var i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].getAttribute("data-i18n") === key) { sel.selectedIndex = i; break; }
+        }
+      });
+    });
   }
 
   /* ---------------- diagnostic reveal ---------------- */
@@ -155,8 +187,9 @@
 
   /* ---------------- init ---------------- */
   document.addEventListener("DOMContentLoaded", function () {
-    loadGA(); bindLinks(); bindSeats(); initCountdown(); initAnnc(); initMenu(); initDiag(); initBlogFilters();
+    loadGA(); bindLinks(); bindSeats(); initCountdown(); initAnnc(); initMenu(); initDiag(); initReveal(); initPreselect(); initBlogFilters();
     initForm("form-register", { event: "batch_register" });
+    initForm("form-g4kit", { event: "g4_kit_signup" });
     initForm("form-leadmagnet", {
       event: "leadmagnet_signup",
       onSuccess: function (successEl) {
