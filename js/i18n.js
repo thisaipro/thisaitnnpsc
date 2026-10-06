@@ -18,6 +18,7 @@
     en: {
       /* ---- chrome / nav ---- */
       "nav.home": "Home",
+      "nav.group4": "Group 4 Exam",
       "nav.courses": "Courses & Test Series",
       "nav.blog": "Blog & Current Affairs",
       "nav.why": "Why Thisai",
@@ -284,6 +285,7 @@
        ====================================================================== */
     ta: {
       "nav.home": "முகப்பு",
+      "nav.group4": "குரூப் 4 தேர்வு",
       "nav.courses": "பாடநெறிகள் & தேர்வுத் தொடர்",
       "nav.blog": "வலைப்பதிவு & நடப்பு நிகழ்வுகள்",
       "nav.why": "ஏன் திசை",

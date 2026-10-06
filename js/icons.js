@@ -25,7 +25,14 @@
     "ic-gift":     '<path d="M4 11h16v9H4z"/><path d="M3 7h18v4H3z"/><path d="M12 7v13"/><path d="M12 7C12 7 11 3.5 8.6 4.1 6.8 4.6 7.4 7 12 7zM12 7s1-3.5 3.4-2.9C17.2 4.6 16.6 7 12 7z"/>',
     "ic-check":    '<path d="M5 12.5l4.2 4.2L19 6"/>',
     "ic-clock":    '<circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/>',
-    "ic-spark":    '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>'
+    "ic-spark":    '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>',
+    "ic-news":     '<path d="M4 5h13v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M17 8h3v10a2 2 0 0 1-2 2"/><path d="M7 8h7M7 11h7M7 14h4"/>',
+    "ic-pencil":   '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>',
+    "ic-repeat":   '<path d="M4 9a6 6 0 0 1 6-6h6"/><path d="M13 1l3 2-3 2"/><path d="M20 15a6 6 0 0 1-6 6H8"/><path d="M11 23l-3-2 3-2"/>',
+    "ic-brain":    '<path d="M9 4a2.5 2.5 0 0 0-2.5 2.5A2.5 2.5 0 0 0 4 9a2.5 2.5 0 0 0 1.2 2.1A2.5 2.5 0 0 0 6 16c.5 1.2 1.7 2 3 2V4z"/><path d="M15 4a2.5 2.5 0 0 1 2.5 2.5A2.5 2.5 0 0 1 20 9a2.5 2.5 0 0 1-1.2 2.1A2.5 2.5 0 0 1 18 16c-.5 1.2-1.7 2-3 2V4z"/>',
+    "ic-rocket":   '<path d="M5 15c-1 1-1.5 4-1.5 4s3-.5 4-1.5"/><path d="M9 15l-3-3c1-5 5-9 11-9 0 6-4 10-9 11z"/><circle cx="14.5" cy="9.5" r="1.5"/>',
+    "ic-calendar": '<rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/>',
+    "ic-arrow-down":'<path d="M12 4v16M6 14l6 6 6-6"/>'
   };
   function build() {
     if (document.getElementById("thisai-icon-sprite")) return;

@@ -15,6 +15,9 @@ window.THISAI_CONFIG = {
   WHATSAPP_MSG_LEADMAGNET:"Hi! Please send me the free TNPSC Group 4 2024 solved question paper (Tamil).",
   WHATSAPP_MSG_COURSES:   "Hi, I'd like guidance on which Thisai program fits me.",
   WHATSAPP_MSG_CA:        "Hi, I'd like to join the Thisai current-affairs broadcast.",
+  WHATSAPP_MSG_G4KIT:     "Hi, I want the FREE TNPSC Group 4 Preparation Kit (Syllabus + Study Plan + PYQs + Mock Test).",
+  WHATSAPP_MSG_G4TEST:    "Hi, I took the Group 4 Diagnostic Test — please share my detailed analysis.",
+  WHATSAPP_MSG_COUNSELLOR:"Hi, I'd like to talk to a Thisai counsellor about TNPSC Group 4.",
 
   /* --- 2. FORM SUBMISSION ENDPOINT (Formspree / Sheets / serverless) ---
      Until set (contains REPLACE_ME), forms run in DEMO MODE: validate + show
@@ -25,9 +28,11 @@ window.THISAI_CONFIG = {
   LEAD_MAGNET_LINK: "https://thisai.pro/REPLACE_ME/group4-2024-solved-tamil.pdf", // [confirm]
 
   /* --- 4. KEY DATES --- */
-  COUNTDOWN_ISO:   "2026-11-02T09:00:00+05:30",  // hero countdown target = Batch 1 start
+  COUNTDOWN_ISO:   "2026-11-02T09:00:00+05:30",  // home hero countdown = Batch 1 start
   TEST_SERIES_ISO: "2026-10-20T09:00:00+05:30",  // Group 4 Test Series
   BATCH1_DATE_ISO: "2026-11-02T00:00:00+05:30",  // Batch 1 (Group 1,2,4) course start
+  G4_EXAM_ISO:     "2027-01-10T10:00:00+05:30",  // TNPSC Group 4 exam (target) — Jan 10, 2027
+  G4_VACANCIES:    "6,574",                      // announced vacancies (verify with TNPSC notification)
 
   /* --- 5. SEATS REMAINING (honest only; null hides it) --- */
   SEATS_REMAINING: null,                          // e.g. 12 (or null)
