@@ -20,9 +20,10 @@
       "nav.home": "Home",
       "nav.group4": "Group 4 Exam",
       "nav.courses": "Courses & Test Series",
-      "nav.blog": "Blog & Current Affairs",
       "nav.why": "Why Thisai",
+      "nav.blog": "News & Articles",
       "nav.contact": "Contact",
+      "slogan": "Your dream, our direction.",
       "btn.register": "Register",
       "btn.signin": "Sign in",
       "btn.enroll": "Enroll now",
@@ -36,7 +37,7 @@
 
       /* ---- hero ---- */
       "hero.eyebrow": "TNPSC Group 1 · 2 · 4 — Combined Foundation · Erode",
-      "hero.title": "Erode, your TNPSC officer starts here.",
+      "hero.title": "Your dream, our direction.",
       "hero.sub": "Serious TNPSC coaching in Erode — AI-powered diagnostics, serving-officer mentorship, and a combined Group 1, 2 &amp; 4 program. Progress, or your money back.",
       "hero.cta1": "Reserve your Batch 1 seat",
       "hero.cta2": "Group 4 Test Series — Oct 20 →",
@@ -133,8 +134,8 @@
       "guar.1": "Maintains at least <b>75%</b> attendance in scheduled classes and doubt-clearing sessions",
       "guar.2": "Scores at least <b>75%</b> across the assigned weekly tests",
       "guar.3": "Follows the personalised study plan issued each week",
-      "guar.fine": "If, after {{GUARANTEE_WEEKS}} weeks under these conditions, a student's diagnostic score has <b>not improved over their baseline test score</b>, Thisai will refund {{GUARANTEE_REFUND_TERMS}}. Full terms are provided at enrollment.",
-      "guar.legal": "⚠︎ Draft terms — pending legal review before publishing.",
+      "guar.fine": "If, after <b>6 weeks</b> of meeting these conditions, your <b>test scores, subject knowledge or confidence have not improved</b>, Thisai will refund <b>50% of your fees</b>. Full terms are provided at enrollment.",
+      "guar.legal": "",
 
       /* ---- register ---- */
       "reg.eyebrow": "Admissions — Batch 1 & Test Series",
@@ -285,18 +286,34 @@
       "cp.cta.d": "Tell us where you are and we'll guide you to the right starting point on WhatsApp.",
 
       /* ---- blog page ---- */
-      "bp.title": "Blog, Articles & Current Affairs",
-      "bp.sub": "TNPSC and UPSC current affairs, exam strategy and study notes from the Thisai team — in English and Tamil. Fresh posts will appear here as Batch 1 gets underway.",
-      "bp.bc": "Blog & Current Affairs",
+      "bp.title": "News & Articles",
+      "bp.sub": "TNPSC & UPSC news, exam updates and study articles from the Thisai team — in English and Tamil. Fresh posts are coming soon.",
+      "bp.bc": "News & Articles",
       "bp.filter.all": "All",
-      "bp.filter.ca": "Current Affairs",
+      "bp.filter.news": "News",
       "bp.filter.article": "Articles",
-      "bp.filter.update": "Exam Updates",
       "bp.readmore": "Read more →",
-      "bp.sample": "These are sample/template posts showing the layout. Replace them with real articles — see blog.html for where to add posts. Nothing here is fabricated news; each is clearly a placeholder until the team publishes real content.",
-      "bp.empty": "No posts in this category yet — check back soon.",
+      "bp.empty": "No posts yet — fresh news & articles are coming soon. Join our WhatsApp for daily current affairs.",
       "bp.cta.t": "Want current affairs on WhatsApp?",
-      "bp.cta.d": "Join our broadcast for daily TNPSC/UPSC current affairs in Tamil and English."
+      "bp.cta.d": "Join our broadcast for daily TNPSC/UPSC current affairs in Tamil and English.",
+
+      /* ---- why page / contact page ---- */
+      "wp.bc": "Why Thisai",
+      "wp.title": "Why Thisai?",
+      "wp.sub": "Your dream, our direction. More than classes — a complete system built to get you to the exam, ready.",
+      "wp.cta.t": "Ready to start?",
+      "wp.cta.d": "Register your interest and we'll confirm your seat on WhatsApp.",
+      "co.bc": "Contact",
+      "co.title": "Contact Thisai IAS Academy",
+      "co.sub": "Visit us on Sakthi Road, near the Erode Bus Stand — or send a message and we'll reply on WhatsApp.",
+      "co.reach": "Reach us",
+      "co.hours": "Office hours", "co.hours.v": "Mon–Sat · 9:00 AM – 7:00 PM",
+      "co.form.title": "Send us a message",
+      "co.form.intro": "We'll reply on WhatsApp or email.",
+      "co.msg": "Your message", "co.msg.ph": "How can we help?",
+      "co.send": "Send message",
+      "co.success.t": "Message sent.",
+      "co.success.d": "Thanks! Our team will get back to you shortly."
     },
 
     /* ======================================================================
@@ -306,9 +323,10 @@
       "nav.home": "முகப்பு",
       "nav.group4": "குரூப் 4 தேர்வு",
       "nav.courses": "பாடநெறிகள் & தேர்வுத் தொடர்",
-      "nav.blog": "வலைப்பதிவு & நடப்பு நிகழ்வுகள்",
       "nav.why": "ஏன் திசை",
+      "nav.blog": "செய்திகள் & கட்டுரைகள்",
       "nav.contact": "தொடர்பு",
+      "slogan": "உங்கள் கனவு, எங்கள் வழிகாட்டுதல்.",
       "btn.register": "பதிவு செய்க",
       "btn.signin": "உள்நுழைக",
       "btn.enroll": "இப்போதே சேருங்கள்",
@@ -320,7 +338,7 @@
       "annc.3": "ஈரோட்டின் திறமையான மாணவர்களுக்கு <b>இலவச UPSC வழிகாட்டுதல்</b> — UPSC நேர்காணல் நிலை வேட்பாளர்களால்",
 
       "hero.eyebrow": "TNPSC குரூப் 1 · 2 · 4 — ஒருங்கிணைந்த அடித்தளம் · ஈரோடு",
-      "hero.title": "ஈரோடு, உங்கள் TNPSC அதிகாரி இங்கே உருவாகிறார்.",
+      "hero.title": "உங்கள் கனவு, எங்கள் வழிகாட்டுதல்.",
       "hero.sub": "ஈரோட்டில் தீவிர TNPSC பயிற்சி — AI திறன் பகுப்பாய்வு, அதிகாரிகளின் வழிகாட்டுதல், குரூப் 1, 2 & 4 ஒருங்கிணைந்த பாடநெறி. முன்னேறுங்கள், இல்லையெனில் பணம் திரும்பப் பெறுங்கள்.",
       "hero.cta1": "உங்கள் தொகுதி 1 இடத்தை முன்பதிவு செய்யுங்கள்",
       "hero.cta2": "குரூப் 4 தேர்வுத் தொடர் — அக். 20 →",
@@ -409,8 +427,8 @@
       "guar.1": "திட்டமிடப்பட்ட வகுப்புகள் & ஐயம் தீர்க்கும் அமர்வுகளில் குறைந்தது <b>75%</b> வருகை",
       "guar.2": "ஒதுக்கப்பட்ட வாராந்திர தேர்வுகளில் குறைந்தது <b>75%</b> மதிப்பெண்",
       "guar.3": "ஒவ்வொரு வாரமும் வழங்கப்படும் தனிப்பயன் படிப்புத் திட்டத்தைப் பின்பற்றுதல்",
-      "guar.fine": "இந்த நிபந்தனைகளின் கீழ் {{GUARANTEE_WEEKS}} வாரங்களுக்குப் பிறகு, ஒரு மாணவரின் திறன் மதிப்பெண் <b>அவரது அடிப்படை தேர்வு மதிப்பெண்ணை விட முன்னேறவில்லை</b> எனில், திசை {{GUARANTEE_REFUND_TERMS}} திருப்பித் தரும். முழு நிபந்தனைகள் சேரும்போது வழங்கப்படும்.",
-      "guar.legal": "⚠︎ வரைவு நிபந்தனைகள் — வெளியிடுவதற்கு முன் சட்ட ஆய்வு நிலுவையில்.",
+      "guar.fine": "இந்த நிபந்தனைகளைப் பூர்த்தி செய்த <b>6 வாரங்களுக்குப்</b> பிறகும், உங்கள் <b>தேர்வு மதிப்பெண், பாட அறிவு அல்லது தன்னம்பிக்கை முன்னேறவில்லை</b> எனில், திசை உங்கள் <b>கட்டணத்தில் 50%</b> திருப்பித் தரும். முழு நிபந்தனைகள் சேரும்போது வழங்கப்படும்.",
+      "guar.legal": "",
 
       "reg.eyebrow": "சேர்க்கை — தொகுதி 1 & தேர்வுத் தொடர்",
       "reg.title": "உங்கள் ஆர்வத்தைப் பதிவு செய்யுங்கள். WhatsApp-இல் இடத்தை உறுதிப்படுத்துவோம்.",
@@ -551,18 +569,33 @@
       "cp.cta.title": "எது உங்களுக்குப் பொருந்தும் என்று உறுதியில்லையா?",
       "cp.cta.d": "நீங்கள் எங்கு இருக்கிறீர்கள் என்று சொல்லுங்கள், WhatsApp-இல் சரியான தொடக்கப் புள்ளிக்கு வழிகாட்டுவோம்.",
 
-      "bp.title": "வலைப்பதிவு, கட்டுரைகள் & நடப்பு நிகழ்வுகள்",
-      "bp.sub": "திசை குழுவிடமிருந்து TNPSC மற்றும் UPSC நடப்பு நிகழ்வுகள், தேர்வு உத்தி மற்றும் படிப்புக் குறிப்புகள் — தமிழ் மற்றும் ஆங்கிலத்தில். தொகுதி 1 தொடங்கும்போது புதிய பதிவுகள் இங்கே தோன்றும்.",
-      "bp.bc": "வலைப்பதிவு & நடப்பு நிகழ்வுகள்",
+      "bp.title": "செய்திகள் & கட்டுரைகள்",
+      "bp.sub": "திசை குழுவிடமிருந்து TNPSC & UPSC செய்திகள், தேர்வு புதுப்பிப்புகள் மற்றும் படிப்புக் கட்டுரைகள் — தமிழ் & ஆங்கிலத்தில். புதிய பதிவுகள் விரைவில்.",
+      "bp.bc": "செய்திகள் & கட்டுரைகள்",
       "bp.filter.all": "அனைத்தும்",
-      "bp.filter.ca": "நடப்பு நிகழ்வுகள்",
+      "bp.filter.news": "செய்திகள்",
       "bp.filter.article": "கட்டுரைகள்",
-      "bp.filter.update": "தேர்வு புதுப்பிப்புகள்",
       "bp.readmore": "மேலும் படிக்க →",
-      "bp.sample": "இவை தளவமைப்பைக் காட்டும் மாதிரி/வார்ப்புரு பதிவுகள். உண்மையான கட்டுரைகளால் மாற்றவும் — பதிவுகளைச் சேர்க்க blog.html பார்க்கவும். இங்கே எதுவும் கற்பனையான செய்தி அல்ல; குழு உண்மையான உள்ளடக்கத்தை வெளியிடும் வரை ஒவ்வொன்றும் தெளிவாக ஒரு இடம்பிடிப்பே.",
-      "bp.empty": "இந்த வகையில் இன்னும் பதிவுகள் இல்லை — விரைவில் பார்க்கவும்.",
+      "bp.empty": "இன்னும் பதிவுகள் இல்லை — புதிய செய்திகள் & கட்டுரைகள் விரைவில். தினசரி நடப்பு நிகழ்வுகளுக்கு WhatsApp-இல் சேருங்கள்.",
       "bp.cta.t": "WhatsApp-இல் நடப்பு நிகழ்வுகள் வேண்டுமா?",
-      "bp.cta.d": "தமிழ் & ஆங்கிலத்தில் தினசரி TNPSC/UPSC நடப்பு நிகழ்வுகளுக்கு எங்கள் ஒளிபரப்பில் சேருங்கள்."
+      "bp.cta.d": "தமிழ் & ஆங்கிலத்தில் தினசரி TNPSC/UPSC நடப்பு நிகழ்வுகளுக்கு எங்கள் ஒளிபரப்பில் சேருங்கள்.",
+
+      "wp.bc": "ஏன் திசை",
+      "wp.title": "ஏன் திசை?",
+      "wp.sub": "உங்கள் கனவு, எங்கள் வழிகாட்டுதல். வெறும் வகுப்புகள் அல்ல — தேர்விற்குத் தயாராக்கும் முழு அமைப்பு.",
+      "wp.cta.t": "தொடங்கத் தயாரா?",
+      "wp.cta.d": "உங்கள் ஆர்வத்தைப் பதிவு செய்யுங்கள், WhatsApp-இல் உங்கள் இடத்தை உறுதிப்படுத்துவோம்.",
+      "co.bc": "தொடர்பு",
+      "co.title": "திசை IAS அகாடமியைத் தொடர்பு கொள்ளுங்கள்",
+      "co.sub": "சக்தி சாலையில், ஈரோடு பேருந்து நிலையம் அருகில் எங்களைச் சந்திக்கவும் — அல்லது செய்தி அனுப்புங்கள், WhatsApp-இல் பதிலளிப்போம்.",
+      "co.reach": "எங்களை அணுகுங்கள்",
+      "co.hours": "அலுவலக நேரம்", "co.hours.v": "திங்கள்–சனி · காலை 9:00 – மாலை 7:00",
+      "co.form.title": "எங்களுக்கு செய்தி அனுப்புங்கள்",
+      "co.form.intro": "WhatsApp அல்லது மின்னஞ்சலில் பதிலளிப்போம்.",
+      "co.msg": "உங்கள் செய்தி", "co.msg.ph": "நாங்கள் எப்படி உதவலாம்?",
+      "co.send": "செய்தி அனுப்பு",
+      "co.success.t": "செய்தி அனுப்பப்பட்டது.",
+      "co.success.d": "நன்றி! எங்கள் குழு விரைவில் உங்களைத் தொடர்பு கொள்ளும்."
     }
   };
 
