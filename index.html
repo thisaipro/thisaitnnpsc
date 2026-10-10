@@ -60,7 +60,8 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="index.html" aria-label="Thisai IAS Academy home">
-        <img src="assets/logo-horizontal.png" alt="Thisai IAS Academy — TNPSC coaching in Erode" width="2000" height="1000" />
+        <img class="brand-seal" src="assets/logo-badge.webp" alt="Thisai IAS Academy" width="48" height="48" />
+        <span class="brand-wm"><strong>Thisai</strong><em>IAS Academy</em></span>
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="index.html" class="active" data-i18n="nav.home">Home</a>
@@ -110,13 +111,7 @@
 
           <div class="hero-cta-row">
             <a href="#register" class="btn btn-gold" data-i18n="hero.cta1">Reserve your Batch 1 seat</a>
-            <a href="courses.html" class="btn btn-ghost-light" data-i18n="hero.cta2">Group 4 Test Series — Oct 20 →</a>
-          </div>
-
-          <div class="pillrow">
-            <a class="chip" href="#free-test"><svg class="ico"><use href="#ic-doc"></use></svg> <span data-i18n="prog.2.title">Group 4 Test Series</span></a>
-            <a class="chip" href="#register"><svg class="ico"><use href="#ic-cap"></use></svg> <span data-i18n="prog.1.title">TNPSC Group 1, 2 &amp; 4 — Combined Course</span></a>
-            <a class="chip" href="courses.html#upsc"><svg class="ico"><use href="#ic-building"></use></svg> <span data-i18n="prog.3.title">UPSC Civil Services Mentorship</span></a>
+            <a href="#free-ts" class="btn btn-ghost-light" data-i18n="hero.cta2">Free Group 4 Test Series →</a>
           </div>
 
           <div class="countdown" id="countdown" aria-live="polite">
@@ -142,6 +137,40 @@
           </ul>
           <p class="hero-card-foot" data-i18n="heroCard.foot">*Conditions apply — see the Progress Guarantee below.</p>
         </aside>
+      </div>
+    </section>
+
+    <!-- ============ FREE GROUP 4 TEST SERIES — LEAD FORM (after hero) ============ -->
+    <section class="section ts-band" id="free-ts" aria-labelledby="ts-title">
+      <div class="wrap ts-grid">
+        <div>
+          <span class="free-tag"><svg class="ico"><use href="#ic-gift"></use></svg> <span data-i18n="ts.tag">Free · Limited seats</span></span>
+          <h2 id="ts-title" data-i18n="ts.title">Free Group 4 Test Series</h2>
+          <p class="ts-worth"><span class="was">₹5,000</span> <span class="now" data-i18n="ts.free">FREE</span></p>
+          <p class="lead" data-i18n="ts.lead">Full-length &amp; topic-wise tests on the real Group 4 pattern, with an AI analysis report after every test. Register free — we'll confirm your slot on WhatsApp.</p>
+          <ul class="ts-feats">
+            <li><svg class="ico"><use href="#ic-doc"></use></svg> <span data-i18n="ts.f1">Full-length + topic tests</span></li>
+            <li><svg class="ico"><use href="#ic-ai"></use></svg> <span data-i18n="ts.f2">AI analysis after every test</span></li>
+            <li><svg class="ico"><use href="#ic-chart"></use></svg> <span data-i18n="ts.f3">Know what to fix next</span></li>
+            <li><svg class="ico"><use href="#ic-building"></use></svg> <span data-i18n="ts.f4">Tamil &amp; English · Erode</span></li>
+          </ul>
+        </div>
+        <div class="form-card form-card-blue">
+          <h3 data-i18n="ts.form.title">Claim your free seat</h3>
+          <p class="form-intro" data-i18n="ts.form.intro">Name, phone &amp; email — takes 20 seconds.</p>
+          <form id="form-g4ts" class="lead-form" novalidate>
+            <input type="hidden" name="_form" value="Group 4 Test Series (Free) — after hero" />
+            <div class="field"><label for="ts-name" data-i18n="f.name">Full name</label><input id="ts-name" name="name" type="text" autocomplete="name" required minlength="2" data-i18n-ph="f.name.ph" placeholder="Your name" /><span class="field-error" data-error></span></div>
+            <div class="field"><label for="ts-phone" data-i18n="f.phone">Phone number</label><input id="ts-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required data-i18n-ph="f.phone.ph" placeholder="10-digit mobile number" /><span class="field-error" data-error></span></div>
+            <div class="field"><label for="ts-email" data-i18n="ts.email">Email address</label><input id="ts-email" name="email" type="email" autocomplete="email" required data-i18n-ph="ts.email.ph" placeholder="you@example.com" /><span class="field-error" data-error></span></div>
+            <button type="submit" class="btn btn-gold btn-block" data-i18n="ts.submit">Claim free access</button>
+            <div class="form-success" data-success hidden role="status">
+              <div class="success-tick" aria-hidden="true">✓</div>
+              <h4 data-i18n="ts.success.t">Your free seat is reserved.</h4>
+              <p data-i18n="ts.success.d">We'll confirm your Group 4 Test Series slot on WhatsApp shortly.</p>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -172,30 +201,6 @@
             <p data-i18n="prog.3.desc">Free mentorship for Erode's talented aspirants, guided by candidates who have reached the UPSC interview stage — lifting our students toward the national stage.</p>
             <p style="margin-top:14px"><a href="courses.html#upsc" data-i18n="prog.more">See full details →</a></p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ FREE GROUP 4 TEST SERIES ============ -->
-    <section class="section free-band" id="free-test" aria-labelledby="free-title">
-      <div class="wrap free-grid">
-        <div>
-          <span class="free-tag"><svg class="ico"><use href="#ic-gift"></use></svg> <span data-i18n="free.tag">Launch offer</span></span>
-          <h2 id="free-title" data-i18n="free.title">Get the Group 4 Test Series — Free</h2>
-          <p class="lead" data-i18n="free.lead">Start your Group 4 preparation with real exam-pattern tests at zero cost. Register now for free access to the Thisai Group 4 Test Series starting Oct 20 — including the full AI diagnostic report after every test.</p>
-          <ul class="free-feats">
-            <li><span class="free-ico"><svg class="ico"><use href="#ic-doc"></use></svg></span><span data-i18n="free.f1">Full-length &amp; topic-wise Group 4 tests</span></li>
-            <li><span class="free-ico"><svg class="ico"><use href="#ic-ai"></use></svg></span><span data-i18n="free.f2">4-layer AI diagnostic after every test</span></li>
-            <li><span class="free-ico"><svg class="ico"><use href="#ic-chart"></use></svg></span><span data-i18n="free.f3">A ranked list of what to fix next</span></li>
-            <li><span class="free-ico"><svg class="ico"><use href="#ic-building"></use></svg></span><span data-i18n="free.f4">Tamil &amp; English, at our Erode campus</span></li>
-          </ul>
-        </div>
-        <div class="free-cta-card">
-          <p class="strike"><span data-i18n="free.worth">Worth</span> <span class="ph">{{TEST_SERIES_FEE}}</span></p>
-          <div class="big" data-i18n="free.price">₹0</div>
-          <p data-i18n="free.sub">Group 4 Test Series · free access</p>
-          <a class="btn btn-gold btn-block" href="#register" data-preselect-interest="f.interest.test" data-i18n="free.cta">Claim free access</a>
-          <p class="form-micro" style="margin-top:12px" data-i18n="free.micro">We'll confirm your free test slot on WhatsApp.</p>
         </div>
       </div>
     </section>
@@ -314,8 +319,8 @@
         <div class="guar-terms">
           <p class="guar-terms-head" data-i18n="guar.head">The guarantee applies when a student:</p>
           <ul class="ticks">
-            <li data-i18n-html="guar.1">Attends at least <span class="ph">{{GUARANTEE_ATTENDANCE_PCT}}</span>% of scheduled classes and doubt-clearing sessions</li>
-            <li data-i18n-html="guar.2">Completes at least <span class="ph">{{GUARANTEE_COMPLETION_PCT}}</span>% of assigned weekly tests</li>
+            <li data-i18n-html="guar.1">Maintains at least <b>75%</b> attendance in scheduled classes and doubt-clearing sessions</li>
+            <li data-i18n-html="guar.2">Scores at least <b>75%</b> across the assigned weekly tests</li>
             <li data-i18n="guar.3">Follows the personalised study plan issued each week</li>
           </ul>
           <p class="guar-fine" data-i18n-html="guar.fine">If, after <span class="ph">{{GUARANTEE_WEEKS}}</span> weeks under these conditions, a student's diagnostic score has <b>not improved over their baseline test score</b>, Thisai will refund <span class="ph">{{GUARANTEE_REFUND_TERMS}}</span>. Full terms are provided at enrollment.</p>
@@ -532,6 +537,34 @@
   </div>
 
   <div class="toast" data-toast hidden role="status" aria-live="polite"></div>
+
+  <!-- ============ FREE GROUP 4 TEST SERIES POPUP ============ -->
+  <div class="popup" id="g4-popup" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Free Group 4 Test Series">
+    <div class="popup-scrim" data-popup-close></div>
+    <div class="popup-card">
+      <button class="popup-close" data-popup-close aria-label="Close">&times;</button>
+      <div class="popup-head">
+        <img class="seal" src="assets/logo-badge.webp" alt="" aria-hidden="true" width="62" height="62" />
+        <span class="free-tag"><svg class="ico"><use href="#ic-gift"></use></svg> <span data-i18n="pop.tag">Worth ₹5,000 · Free</span></span>
+        <h3 data-i18n="pop.title">Free Group 4 Test Series</h3>
+        <p data-i18n="pop.sub">Real exam-pattern tests + AI analysis. Register free — limited seats.</p>
+      </div>
+      <div class="popup-body">
+        <form id="form-g4popup" class="lead-form" novalidate>
+          <input type="hidden" name="_form" value="Group 4 Test Series (Free) — popup" />
+          <div class="field"><label for="pop-name" data-i18n="f.name">Full name</label><input id="pop-name" name="name" type="text" autocomplete="name" required minlength="2" data-i18n-ph="f.name.ph" placeholder="Your name" /><span class="field-error" data-error></span></div>
+          <div class="field"><label for="pop-phone" data-i18n="f.phone">Phone number</label><input id="pop-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required data-i18n-ph="f.phone.ph" placeholder="10-digit mobile number" /><span class="field-error" data-error></span></div>
+          <div class="field"><label for="pop-email" data-i18n="ts.email">Email address</label><input id="pop-email" name="email" type="email" autocomplete="email" required data-i18n-ph="ts.email.ph" placeholder="you@example.com" /><span class="field-error" data-error></span></div>
+          <button type="submit" class="btn btn-gold btn-block" data-i18n="ts.submit">Claim free access</button>
+          <div class="form-success" data-success hidden role="status">
+            <div class="success-tick" aria-hidden="true">✓</div>
+            <h4 data-i18n="ts.success.t">Your free seat is reserved.</h4>
+            <p data-i18n="ts.success.d">We'll confirm your Group 4 Test Series slot on WhatsApp shortly.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script src="config.js"></script>
   <script src="js/icons.js" defer></script>
