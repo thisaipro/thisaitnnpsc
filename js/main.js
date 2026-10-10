@@ -139,6 +139,7 @@
     if (input.hasAttribute("required") && !val) { showError(field, t("f.err.required") || "Required"); return false; }
     if (input.name === "name" && val.length < 2) { showError(field, "Please enter your name"); return false; }
     if (input.name === "phone" && !validPhone(val)) { showError(field, "Enter a valid 10-digit mobile number"); return false; }
+    if (input.name === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) { showError(field, "Enter a valid email address"); return false; }
     clearError(field); return true;
   }
   function submitForm(payload) {
@@ -171,6 +172,30 @@
     });
   }
 
+  /* ---------------- free G4 test-series popup ---------------- */
+  function initPopup() {
+    var pop = $("#g4-popup"); if (!pop) return;
+    var KEY = "thisai_g4popup_seen";
+    function seen() { try { return sessionStorage.getItem(KEY) === "1"; } catch (e) { return false; } }
+    function markSeen() { try { sessionStorage.setItem(KEY, "1"); } catch (e) {} }
+    function openP() { pop.classList.add("open"); pop.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; markSeen(); track("g4_popup_view"); }
+    function closeP() { pop.classList.remove("open"); pop.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+    $$("[data-popup-close]", pop).forEach(function (b) { b.addEventListener("click", closeP); });
+    $$("[data-open-g4popup]").forEach(function (b) { b.addEventListener("click", function (e) { e.preventDefault(); openP(); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && pop.classList.contains("open")) closeP(); });
+    window.ThisaiPopup = { open: openP, close: closeP };
+    if (!seen()) {
+      var opened = false;
+      var timer = setTimeout(function () { if (!opened) { opened = true; openP(); } }, 12000);
+      var onScroll = function () {
+        if (!opened && window.scrollY > document.documentElement.scrollHeight * 0.22) {
+          opened = true; clearTimeout(timer); openP(); window.removeEventListener("scroll", onScroll);
+        }
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+  }
+
   /* ---------------- blog filters ---------------- */
   function initBlogFilters() {
     var btns = $$(".filter-btn"); if (!btns.length) return;
@@ -187,9 +212,11 @@
 
   /* ---------------- init ---------------- */
   document.addEventListener("DOMContentLoaded", function () {
-    loadGA(); bindLinks(); bindSeats(); initCountdown(); initAnnc(); initMenu(); initDiag(); initReveal(); initPreselect(); initBlogFilters();
+    loadGA(); bindLinks(); bindSeats(); initCountdown(); initAnnc(); initMenu(); initDiag(); initReveal(); initPreselect(); initBlogFilters(); initPopup();
     initForm("form-register", { event: "batch_register" });
     initForm("form-g4kit", { event: "g4_kit_signup" });
+    initForm("form-g4ts", { event: "g4_testseries_signup" });
+    initForm("form-g4popup", { event: "g4_testseries_signup", onSuccess: function () { setTimeout(function () { if (window.ThisaiPopup) window.ThisaiPopup.close(); }, 2600); } });
     initForm("form-leadmagnet", {
       event: "leadmagnet_signup",
       onSuccess: function (successEl) {
