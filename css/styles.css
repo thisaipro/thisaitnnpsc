@@ -250,13 +250,14 @@ html[lang="ta"] .btn { font-family: var(--font-ta); }
 .field.row2 { grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 460px){ .field.row2 { grid-template-columns: 1fr; } }
 .field label { font-weight:700; font-size:.9rem; color: var(--navy); }
-.field input, .field select {
+.field input, .field select, .field textarea {
   width:100%; padding:13px 14px; font-size:16px; font-family: var(--font-body);
   border:1.5px solid #cfd6de; border-radius: var(--rad); background:#fff; color: var(--ink-body);
   transition: border-color .12s, box-shadow .12s;
 }
-html[lang="ta"] .field input, html[lang="ta"] .field select { font-family: var(--font-ta); }
-.field input:focus, .field select:focus { outline:none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(18,71,166,.16); }
+.field textarea { min-height:110px; resize:vertical; }
+html[lang="ta"] .field input, html[lang="ta"] .field select, html[lang="ta"] .field textarea { font-family: var(--font-ta); }
+.field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(18,71,166,.16); }
 .field.invalid input, .field.invalid select { border-color:#c0392b; }
 .field-error { color:#c0392b; font-size:.82rem; min-height:0; }
 .field.invalid .field-error { min-height:1em; }

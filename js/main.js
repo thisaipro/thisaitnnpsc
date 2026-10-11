@@ -149,7 +149,7 @@
   }
   function initForm(formId, opts) {
     var form = $("#" + formId); if (!form) return;
-    var inputs = $$("input[required], select[required]", form);
+    var inputs = $$("input[required], select[required], textarea[required]", form);
     var btn = $('button[type="submit"]', form); var successEl = $("[data-success]", form);
     inputs.forEach(function (inp) {
       inp.addEventListener("blur", function () { validateField(inp); });
@@ -159,7 +159,7 @@
       e.preventDefault();
       var ok = true; inputs.forEach(function (inp) { if (!validateField(inp)) ok = false; });
       if (!ok) { var bad = $(".field.invalid input, .field.invalid select", form); if (bad) bad.focus(); return; }
-      var data = {}; $$("input, select", form).forEach(function (i) { if (i.name) data[i.name] = i.value.trim(); });
+      var data = {}; $$("input, select, textarea", form).forEach(function (i) { if (i.name) data[i.name] = i.value.trim(); });
       data.page = document.title; data.submitted_at = new Date().toISOString();
       btn.disabled = true; var lbl = btn.textContent; btn.textContent = "…";
       submitForm(data).then(function (res) {
@@ -216,6 +216,7 @@
     initForm("form-register", { event: "batch_register" });
     initForm("form-g4kit", { event: "g4_kit_signup" });
     initForm("form-g4ts", { event: "g4_testseries_signup" });
+    initForm("form-contact", { event: "contact_message" });
     initForm("form-g4popup", { event: "g4_testseries_signup", onSuccess: function () { setTimeout(function () { if (window.ThisaiPopup) window.ThisaiPopup.close(); }, 2600); } });
     initForm("form-leadmagnet", {
       event: "leadmagnet_signup",

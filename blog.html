@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog, Articles &amp; Current Affairs | Thisai IAS Academy, Erode</title>
+  <title>News &amp; Articles | Thisai IAS Academy, Erode</title>
   <meta name="description" content="TNPSC and UPSC current affairs, exam strategy articles and study notes from Thisai IAS Academy, Erode — in English and Tamil." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://thisai.pro/blog.html" />
@@ -47,8 +47,8 @@
         <a href="group4.html" data-i18n="nav.group4">Group 4 Exam</a>
         <a href="courses.html" data-i18n="nav.courses">Courses &amp; Test Series</a>
         <a href="blog.html" class="active" data-i18n="nav.blog">Blog &amp; Current Affairs</a>
-        <a href="index.html#why" data-i18n="nav.why">Why Thisai</a>
-        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        <a href="why.html" data-i18n="nav.why">Why Thisai</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
       </nav>
       <div class="header-actions">
         <div class="lang-toggle" role="group" aria-label="Language">
@@ -70,8 +70,8 @@
     <a href="group4.html" data-i18n="nav.group4">Group 4 Exam</a>
         <a href="courses.html" data-i18n="nav.courses">Courses &amp; Test Series</a>
     <a href="blog.html" data-i18n="nav.blog">Blog &amp; Current Affairs</a>
-    <a href="index.html#why" data-i18n="nav.why">Why Thisai</a>
-    <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+    <a href="why.html" data-i18n="nav.why">Why Thisai</a>
+    <a href="contact.html" data-i18n="nav.contact">Contact</a>
     <a href="index.html#register" class="btn btn-gold" style="margin-top:14px" data-i18n="btn.register">Register</a>
     <button type="button" class="btn btn-ghost" style="margin-top:8px" data-open-auth="signin" data-i18n="btn.signin">Sign in</button>
   </nav>
@@ -80,9 +80,9 @@
     <!-- PAGE HERO -->
     <section class="page-hero">
       <div class="wrap">
-        <p class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="bp.bc">Blog &amp; Current Affairs</span></p>
-        <h1 data-i18n="bp.title">Blog, Articles &amp; Current Affairs</h1>
-        <p data-i18n="bp.sub">TNPSC and UPSC current affairs, exam strategy and study notes from the Thisai team — in English and Tamil. Fresh posts will appear here as Batch 1 gets underway.</p>
+        <p class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="bp.bc">News &amp; Articles</span></p>
+        <h1 data-i18n="bp.title">News &amp; Articles</h1>
+        <p data-i18n="bp.sub">TNPSC &amp; UPSC news, exam updates and study articles from the Thisai team — in English and Tamil. Fresh posts are coming soon.</p>
       </div>
     </section>
 
@@ -91,13 +91,9 @@
         <!-- Filters -->
         <div class="blog-filters" role="group" aria-label="Filter posts">
           <button class="filter-btn active" data-filter="all" data-i18n="bp.filter.all">All</button>
-          <button class="filter-btn" data-filter="ca" data-i18n="bp.filter.ca">Current Affairs</button>
+          <button class="filter-btn" data-filter="news" data-i18n="bp.filter.news">News</button>
           <button class="filter-btn" data-filter="article" data-i18n="bp.filter.article">Articles</button>
-          <button class="filter-btn" data-filter="update" data-i18n="bp.filter.update">Exam Updates</button>
         </div>
-
-        <!-- Honest note: these are placeholders, not fabricated news. -->
-        <div class="sample-note" data-i18n="bp.sample">These are sample/template posts showing the layout. Replace them with real articles — see blog.html for where to add posts. Nothing here is fabricated news; each is clearly a placeholder until the team publishes real content.</div>
 
         <!-- ADMIN TOOLBAR (shown only to super admins — see config.SUPER_ADMINS & js/blog-admin.js) -->
         <div class="admin-bar" id="admin-bar">
@@ -112,8 +108,8 @@
             <div class="field"><label for="c-title">Title</label><input id="c-title" type="text" required placeholder="Post title" /></div>
             <div class="field row2">
               <div class="field" style="gap:6px"><label for="c-cat">Category</label>
-                <select id="c-cat"><option value="ca">Current Affairs</option><option value="article">Article</option><option value="update">Exam Update</option></select></div>
-              <div class="field" style="gap:6px"><label for="c-date">Date label</label><input id="c-date" type="text" placeholder="e.g. 5 Oct 2026" /></div>
+                <select id="c-cat"><option value="news">News</option><option value="article">Article</option></select></div>
+              <div class="field" style="gap:6px"><label for="c-date">Date label</label><input id="c-date" type="text" placeholder="e.g. 10 Oct 2026" /></div>
             </div>
             <div class="field"><label for="c-excerpt">Excerpt / summary</label><textarea id="c-excerpt" required placeholder="A short summary shown on the card"></textarea></div>
             <div class="field"><label for="c-url">Read-more link (optional)</label><input id="c-url" type="url" placeholder="https://… (leave blank for #)" /></div>
@@ -133,83 +129,13 @@
         </div>
 
         <!-- ============================================================
-             POSTS
-             To add a real post: copy one <article class="post"> block,
-             set data-cat to "ca" | "article" | "update", and fill in the
-             category, title, excerpt, date and the "Read more" href.
-             The "SAMPLE" flag marks placeholders — remove it on real posts.
+             POSTS — real posts go here. There are none yet ("coming soon").
+             Add one as: <article class="post" data-cat="news|article"> …
+             matching the card structure, or use the admin composer above.
              ============================================================ -->
-        <div class="blog-grid">
+        <div class="blog-grid"></div>
 
-          <article class="post" data-cat="ca">
-            <div class="post-thumb" aria-hidden="true">CA</div>
-            <div class="post-body">
-              <span class="post-cat">Current Affairs · <em>Sample</em></span>
-              <h3>Weekly TNPSC Current Affairs Digest</h3>
-              <p>A placeholder for the weekly round-up of state and national current affairs mapped to the TNPSC syllabus. Replace with the real digest.</p>
-              <span class="post-date">Template post</span>
-              <a href="#" class="btn btn-ghost btn-sm" style="margin-top:10px;align-self:flex-start" data-i18n="bp.readmore">Read more →</a>
-            </div>
-          </article>
-
-          <article class="post" data-cat="ca">
-            <div class="post-thumb" aria-hidden="true">CA</div>
-            <div class="post-body">
-              <span class="post-cat">Current Affairs · <em>Sample</em></span>
-              <h3>Tamil Nadu in the News — Monthly Review</h3>
-              <p>A placeholder for a monthly TN-focused current-affairs review (schemes, appointments, awards). Replace with real content before publishing.</p>
-              <span class="post-date">Template post</span>
-              <a href="#" class="btn btn-ghost btn-sm" style="margin-top:10px;align-self:flex-start" data-i18n="bp.readmore">Read more →</a>
-            </div>
-          </article>
-
-          <article class="post" data-cat="article">
-            <div class="post-thumb" aria-hidden="true">A</div>
-            <div class="post-body">
-              <span class="post-cat">Article · <em>Sample</em></span>
-              <h3>How to build a Group 4 revision timetable</h3>
-              <p>A placeholder strategy article on planning Group 4 revision with the AI diagnostic. Swap in the real write-up when ready.</p>
-              <span class="post-date">Template post</span>
-              <a href="#" class="btn btn-ghost btn-sm" style="margin-top:10px;align-self:flex-start" data-i18n="bp.readmore">Read more →</a>
-            </div>
-          </article>
-
-          <article class="post" data-cat="article">
-            <div class="post-thumb" aria-hidden="true">A</div>
-            <div class="post-body">
-              <span class="post-cat">Article · <em>Sample</em></span>
-              <h3>Group 1 vs Group 2: which should you target?</h3>
-              <p>A placeholder explainer comparing the two exams, eligibility and preparation load. Replace with the team's real guidance.</p>
-              <span class="post-date">Template post</span>
-              <a href="#" class="btn btn-ghost btn-sm" style="margin-top:10px;align-self:flex-start" data-i18n="bp.readmore">Read more →</a>
-            </div>
-          </article>
-
-          <article class="post" data-cat="update">
-            <div class="post-thumb" aria-hidden="true">U</div>
-            <div class="post-body">
-              <span class="post-cat">Exam Update · <em>Sample</em></span>
-              <h3>TNPSC notification &amp; calendar — what to watch</h3>
-              <p>A placeholder for official exam-update posts (notifications, dates, pattern changes). Only publish verified updates here.</p>
-              <span class="post-date">Template post</span>
-              <a href="#" class="btn btn-ghost btn-sm" style="margin-top:10px;align-self:flex-start" data-i18n="bp.readmore">Read more →</a>
-            </div>
-          </article>
-
-          <article class="post" data-cat="update">
-            <div class="post-thumb" aria-hidden="true">U</div>
-            <div class="post-body">
-              <span class="post-cat">Exam Update · <em>Sample</em></span>
-              <h3>Thisai Group 4 Test Series — schedule</h3>
-              <p>A placeholder for our own test-series schedule and results posts. Fill in once the Oct 20 test series schedule is finalised.</p>
-              <span class="post-date">Template post</span>
-              <a href="#" class="btn btn-ghost btn-sm" style="margin-top:10px;align-self:flex-start" data-i18n="bp.readmore">Read more →</a>
-            </div>
-          </article>
-
-        </div>
-
-        <p class="lead" data-empty hidden style="text-align:center;margin-top:30px" data-i18n="bp.empty">No posts in this category yet — check back soon.</p>
+        <p class="lead" data-empty style="text-align:center;margin-top:10px" data-i18n="bp.empty">No posts yet — fresh news &amp; articles are coming soon. Join our WhatsApp for daily current affairs.</p>
       </div>
     </section>
 
@@ -236,7 +162,7 @@
           <a href="group4.html" data-i18n="nav.group4">Group 4 Exam</a>
         <a href="courses.html" data-i18n="nav.courses">Courses &amp; Test Series</a>
           <a href="blog.html" data-i18n="nav.blog">Blog &amp; Current Affairs</a>
-          <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </div>
         <div class="footer-col"><h4 data-i18n="foot.programs">Programs</h4>
           <a href="courses.html#combined" data-i18n="prog.1.title">TNPSC Group 1, 2 &amp; 4</a>
@@ -247,7 +173,7 @@
       </div>
       <div class="footer-bottom">
         <span data-i18n="foot.rights">© <span data-year>2026</span> Thisai IAS Academy. All rights reserved.</span>
-        <span data-i18n="foot.prepare">Prepare · Practice · Progress</span>
+        <span data-i18n="slogan" style="color:var(--gold-br);font-family:var(--font-head);font-style:italic">Your dream, our direction.</span>
       </div>
     </div>
   </footer>

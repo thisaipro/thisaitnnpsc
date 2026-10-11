@@ -23,8 +23,8 @@
   function getDrafts() { try { return JSON.parse(localStorage.getItem(DRAFTS_KEY) || "[]"); } catch (e) { return []; } }
   function saveDrafts(d) { try { localStorage.setItem(DRAFTS_KEY, JSON.stringify(d)); } catch (e) {} }
   function esc(s) { return (s || "").replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
-  function catLabel(c) { return { ca: "Current Affairs", article: "Article", update: "Exam Update" }[c] || "Article"; }
-  function catThumb(c) { return { ca: "CA", article: "A", update: "U" }[c] || "A"; }
+  function catLabel(c) { return { news: "News", article: "Article", ca: "News", update: "News" }[c] || "Article"; }
+  function catThumb(c) { return { news: "N", article: "A", ca: "N", update: "N" }[c] || "A"; }
 
   function articleHTML(p) {
     return '<article class="post" data-cat="' + esc(p.cat) + '">\n' +
