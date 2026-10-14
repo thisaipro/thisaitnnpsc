@@ -158,11 +158,43 @@ re-export if you change it, and point `og:image` at its absolute URL.
 
 ## Forms
 
-Both forms POST JSON via one `fetch()` in `js/main.js → submitForm()`. A `_form` field
-distinguishes submissions. Options: **Formspree** (paste endpoint in config), **Google
-Sheets via Apps Script**, or **any serverless function**. Lead-magnet delivery captures the
-contact first, then auto-sends the link (via the form tool's autoresponder); the success
-state also surfaces `config.LEAD_MAGNET_LINK` as a fallback.
+Every form submits through one place — `js/main.js → submitForm()` (the Group 4 diagnostic
+quiz uses the same store). Each submission is tagged with a `form` field so you can tell them
+apart. Priority: **(1) Supabase** if configured, else **(2) a Formspree/Sheets endpoint**
+(`config.FORM_ENDPOINT`), else **(3) demo mode** (validates + shows success, sends nothing).
+Lead-magnet delivery captures the contact first; the success state surfaces
+`config.LEAD_MAGNET_LINK`.
+
+## Supabase (your own database — recommended)
+
+Store every registration/enquiry in a database **you own**, viewable in the Supabase
+dashboard and on the protected **`students.html`** page. No server to run — the static site
+talks to Supabase's REST API directly.
+
+**One-time setup (≈5 min):**
+
+1. Go to [supabase.com](https://supabase.com) → create a free account → **New project**
+   (pick a name + a database password you keep safe; region: Singapore/Mumbai is closest).
+2. When the project is ready, open **SQL Editor → New query**, paste the whole of
+   [`supabase-setup.sql`](./supabase-setup.sql), and click **Run**. This creates the
+   `registrations` table and locks it so the public site can only *add* rows.
+3. Open **Project Settings → API** and copy two values into `config.js`:
+   - **Project URL** → `SUPABASE_URL`  (e.g. `https://abcdefgh.supabase.co`)
+   - **Project API keys → `anon` `public`** → `SUPABASE_ANON_KEY`
+   The `anon` key is safe to publish — the policy from step 2 lets it insert only.
+4. Commit/redeploy. Done — every form now saves to your database.
+
+**Seeing the list:**
+
+- **Supabase dashboard → Table Editor → `registrations`** — always available, fully secure.
+- **`students.html`** on the site — sign in with a super-admin email (from `SUPER_ADMINS`),
+  then paste your **`service_role`** key once (Project Settings → API → `service_role`). It is
+  kept only in that browser tab, never saved to the site or repo, and is sent only to Supabase.
+  Includes search + **Export CSV**. A “Registered students” link appears in the footer when an
+  admin is signed in.
+
+> ⚠️ **Never** put the `service_role` / secret key in `config.js` or anywhere in the repo — it
+> bypasses all security. Only `SUPABASE_URL` and `SUPABASE_ANON_KEY` belong in the code.
 
 ## Compliance notes
 

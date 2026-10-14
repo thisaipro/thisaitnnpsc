@@ -10,6 +10,48 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var t  = function (k) { return (window.ThisaiI18n ? window.ThisaiI18n.t(k) : k); };
 
+  /* ---------------- data store (Supabase) ----------------
+     Shared by every form on the site and by the Group 4 diagnostic quiz.
+     configured() is true only when both URL + anon key are set in config.js.
+     The anon key is public-safe: with the insert-only RLS policy it can add
+     rows but cannot read, edit or delete them. */
+  var Store = {
+    configured: function () { return !!(CFG.SUPABASE_URL && CFG.SUPABASE_ANON_KEY); },
+    restBase: function () { return String(CFG.SUPABASE_URL || "").replace(/\/+$/, "") + "/rest/v1/" + (CFG.SUPABASE_TABLE || "registrations"); },
+    // Map any form's raw fields onto the fixed table columns; keep the full
+    // original object in `meta` so nothing is ever lost.
+    normalize: function (raw, formLabel) {
+      raw = raw || {};
+      var scoreRaw = raw.score;
+      var score = (typeof scoreRaw === "number") ? scoreRaw : (scoreRaw != null && scoreRaw !== "" ? (parseInt(scoreRaw, 10) || null) : null);
+      return {
+        form:    formLabel || raw.form || raw._form || "form",
+        name:    raw.name || null,
+        phone:   raw.phone || null,
+        email:   raw.email || null,
+        program: raw.interest || raw.program || null,
+        status:  raw.current_status || raw.status || null,
+        message: raw.message || null,
+        score:   score,
+        page:    raw.page || document.title || null,
+        meta:    raw
+      };
+    },
+    insert: function (row) {
+      return fetch(Store.restBase(), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": CFG.SUPABASE_ANON_KEY,
+          "Authorization": "Bearer " + CFG.SUPABASE_ANON_KEY,
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(row)
+      });
+    }
+  };
+  window.ThisaiStore = Store;
+
   /* ---------------- analytics ---------------- */
   function loadGA() {
     var id = CFG.GA4_MEASUREMENT_ID; if (!id) return;
@@ -143,6 +185,9 @@
     clearError(field); return true;
   }
   function submitForm(payload) {
+    // 1) Preferred: your own Supabase database.
+    if (Store.configured()) { return Store.insert(Store.normalize(payload, payload.form || payload._form)); }
+    // 2) Fallback: Formspree / Sheets endpoint.
     var endpoint = CFG.FORM_ENDPOINT;
     if (!endpoint || /REPLACE_ME/.test(endpoint)) { console.log("[form:DEMO] would POST", payload); return Promise.resolve({ ok: true, demo: true }); }
     return fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload) });
@@ -160,7 +205,7 @@
       var ok = true; inputs.forEach(function (inp) { if (!validateField(inp)) ok = false; });
       if (!ok) { var bad = $(".field.invalid input, .field.invalid select", form); if (bad) bad.focus(); return; }
       var data = {}; $$("input, select, textarea", form).forEach(function (i) { if (i.name) data[i.name] = i.value.trim(); });
-      data.page = document.title; data.submitted_at = new Date().toISOString();
+      data.form = opts.label || opts.event || formId; data.page = document.title; data.submitted_at = new Date().toISOString();
       btn.disabled = true; var lbl = btn.textContent; btn.textContent = "…";
       submitForm(data).then(function (res) {
         if (res && res.ok === false) throw 0;
@@ -226,5 +271,10 @@
       }
     });
     document.addEventListener("thisai:langchange", function () { bindSeats(); });
+
+    // reveal admin-only links (e.g. Registered Students) when a super admin is signed in
+    function syncAdminLinks() { var on = !!(window.ThisaiAuth && window.ThisaiAuth.isAdmin()); $$("[data-admin-only]").forEach(function (el) { el.hidden = !on; }); }
+    syncAdminLinks();
+    document.addEventListener("thisai:authchange", syncAdminLinks);
   });
 })();

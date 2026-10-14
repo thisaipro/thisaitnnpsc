@@ -19,9 +19,24 @@ window.THISAI_CONFIG = {
   WHATSAPP_MSG_G4TEST:    "Hi, I took the Group 4 Diagnostic Test — please share my detailed analysis.",
   WHATSAPP_MSG_COUNSELLOR:"Hi, I'd like to talk to a Thisai counsellor about TNPSC Group 4.",
 
-  /* --- 2. FORM SUBMISSION ENDPOINT (Formspree / Sheets / serverless) ---
-     Until set (contains REPLACE_ME), forms run in DEMO MODE: validate + show
-     success, send nothing. See README + js/main.js submitForm() to swap. */
+  /* --- 2a. SUPABASE (your own database — recommended) ---------------------
+     When SUPABASE_URL + SUPABASE_ANON_KEY are both filled, EVERY form on the
+     site (registration, Group 4 kit, test series, contact, popup, lead magnet,
+     diagnostic quiz) saves as a row in your Supabase `registrations` table.
+     The anon key is PUBLIC-SAFE to ship in the browser — it can only INSERT
+     rows (never read/edit/delete) because of the Row-Level-Security policy you
+     create (see supabase-setup.sql). View the list anytime in the Supabase
+     dashboard → Table Editor, or on the protected students.html page.
+     NEVER put the service_role / secret key in this file or anywhere in the
+     repo — it bypasses all security. Setup steps: README "Supabase". */
+  SUPABASE_URL:      "",   // e.g. https://abcdefgh.supabase.co   (Project Settings → API → Project URL)
+  SUPABASE_ANON_KEY: "",   // the "anon public" key               (Project Settings → API → Project API keys → anon public)
+  SUPABASE_TABLE:    "registrations",
+
+  /* --- 2b. FORM SUBMISSION ENDPOINT (fallback: Formspree / Sheets) ---------
+     Used ONLY when Supabase above is not configured. Until this is set (still
+     contains REPLACE_ME) AND Supabase is empty, forms run in DEMO MODE:
+     validate + show success, send nothing. See js/main.js submitForm(). */
   FORM_ENDPOINT: "https://formspree.io/f/REPLACE_ME", // {{FORM_ENDPOINT}} [confirm]
 
   /* --- 3. LEAD-MAGNET LINK (hosted PDF, auto-sent after capture) --- */
