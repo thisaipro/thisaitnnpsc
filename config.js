@@ -29,8 +29,8 @@ window.THISAI_CONFIG = {
      dashboard → Table Editor, or on the protected students.html page.
      NEVER put the service_role / secret key in this file or anywhere in the
      repo — it bypasses all security. Setup steps: README "Supabase". */
-  SUPABASE_URL:      "",   // e.g. https://abcdefgh.supabase.co   (Project Settings → API → Project URL)
-  SUPABASE_ANON_KEY: "",   // the "anon public" key               (Project Settings → API → Project API keys → anon public)
+  SUPABASE_URL:      "https://ikfvrqncdubplqrgtlzt.supabase.co",   // Project Settings → API → Project URL
+  SUPABASE_ANON_KEY: "sb_publishable_TSv98_KeDqkjIQexqjryLg_GJsQW5w3", // public "publishable" key — safe in the browser (insert-only via RLS)
   SUPABASE_TABLE:    "registrations",
 
   /* --- 2b. FORM SUBMISSION ENDPOINT (fallback: Formspree / Sheets) ---------

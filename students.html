@@ -107,11 +107,11 @@
       <!-- Admin + configured: load + view -->
       <div data-view="ready" hidden>
         <div class="adm-panel">
-          <p class="adm-warn">🔒 <b>Service key stays on this device.</b> Reading the list needs your Supabase <b>service_role</b> key. It is held only in this browser tab (cleared when you close it), never saved to the site or sent anywhere except Supabase. Only paste it on your own trusted device. The safest place to view data is always the Supabase dashboard.</p>
+          <p class="adm-warn">🔒 <b>Secret key stays on this device.</b> Reading the list needs your Supabase <b>secret key</b> (<code class="mono">sb_secret_…</code>, or the legacy <b>service_role</b> key). It is held only in this browser tab (cleared when you close it), never saved to the site or sent anywhere except Supabase. Only paste it on your own trusted device. The safest place to view data is always the Supabase dashboard.</p>
           <form class="adm-key" data-key-form autocomplete="off">
             <div class="field">
-              <label for="svc">Supabase service_role key</label>
-              <input id="svc" name="svc" type="password" placeholder="service_role key (Project Settings → API)" autocomplete="off" />
+              <label for="svc">Supabase secret / service_role key</label>
+              <input id="svc" name="svc" type="password" placeholder="sb_secret_… or service_role key (Project Settings → API)" autocomplete="off" />
             </div>
             <button type="submit" class="btn btn-gold">Load registrations</button>
           </form>

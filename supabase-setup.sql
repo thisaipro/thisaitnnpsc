@@ -44,7 +44,8 @@ create policy "anon can insert registrations"
 --   • You, in the Supabase dashboard → Table Editor → registrations (always,
 --     fully secure — the dashboard uses your logged-in account, not the key).
 --   • The protected students.html page on the site, where you paste your
---     service_role key at view time (kept only in that browser tab, never in
---     the code). The service_role key bypasses RLS — treat it like a password,
---     only use it on your own device, and never commit it anywhere.
+--     SECRET key (sb_secret_… — or the legacy service_role key) at view time
+--     (kept only in that browser tab, never in the code). The secret key
+--     bypasses RLS — treat it like a password, only use it on your own device,
+--     and never commit it anywhere.
 -- ----------------------------------------------------------------------------

@@ -180,15 +180,15 @@ talks to Supabase's REST API directly.
    `registrations` table and locks it so the public site can only *add* rows.
 3. Open **Project Settings → API** and copy two values into `config.js`:
    - **Project URL** → `SUPABASE_URL`  (e.g. `https://abcdefgh.supabase.co`)
-   - **Project API keys → `anon` `public`** → `SUPABASE_ANON_KEY`
-   The `anon` key is safe to publish — the policy from step 2 lets it insert only.
+   - **Publishable key** (`sb_publishable_…`), or the legacy **`anon` `public`** key → `SUPABASE_ANON_KEY`
+   This public key is safe to publish — the policy from step 2 lets it insert only.
 4. Commit/redeploy. Done — every form now saves to your database.
 
 **Seeing the list:**
 
 - **Supabase dashboard → Table Editor → `registrations`** — always available, fully secure.
 - **`students.html`** on the site — sign in with a super-admin email (from `SUPER_ADMINS`),
-  then paste your **`service_role`** key once (Project Settings → API → `service_role`). It is
+  then paste your **secret key** once (`sb_secret_…`, or the legacy `service_role` key). It is
   kept only in that browser tab, never saved to the site or repo, and is sent only to Supabase.
   Includes search + **Export CSV**. A “Registered students” link appears in the footer when an
   admin is signed in.
