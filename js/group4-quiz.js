@@ -212,19 +212,24 @@
         if (bad) ok = false;
       });
       if (!ok) return;
-      var data = { _form: "Group 4 Diagnostic Lead", score: meta.score, strong: meta.strong, weak: meta.weak };
+      var data = { _form: "Group 4 Diagnostic", score: meta.score, strong: meta.strong, weak: meta.weak, page: document.title };
       $$("input", form).forEach(function (i) { if (i.name) data[i.name] = i.value.trim(); });
       var btn = $('button[type="submit"]', form); btn.disabled = true; btn.textContent = "Sending…";
-      var endpoint = CFG.FORM_ENDPOINT, demo = !endpoint || /REPLACE_ME/.test(endpoint);
       var done = function () {
         $$(".field, button[type=submit]", form).forEach(function (el) { el.style.display = "none"; });
         var ok = $("[data-success]", form); if (ok) ok.hidden = false;
         if (window.gtag) window.gtag("event", "g4_diagnostic_lead", { score: meta.score });
       };
+      var fail = function () { btn.disabled = false; btn.textContent = "Send my analysis + free kit"; alert("Something went wrong — please use the WhatsApp button."); };
+      // Preferred: Supabase. Fallback: Formspree endpoint. Else demo.
+      if (window.ThisaiStore && window.ThisaiStore.configured()) {
+        window.ThisaiStore.insert(window.ThisaiStore.normalize(data, data._form))
+          .then(function (r) { if (r && r.ok === false) throw 0; done(); }).catch(fail); return;
+      }
+      var endpoint = CFG.FORM_ENDPOINT, demo = !endpoint || /REPLACE_ME/.test(endpoint);
       if (demo) { console.log("[form:DEMO] diagnostic lead", data); done(); return; }
       fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
-        .then(function (r) { if (r && r.ok === false) throw 0; done(); })
-        .catch(function () { btn.disabled = false; btn.textContent = "Send my analysis + free kit"; alert("Something went wrong — please use the WhatsApp button."); });
+        .then(function (r) { if (r && r.ok === false) throw 0; done(); }).catch(fail);
     });
   }
 
