@@ -127,6 +127,14 @@
   function doSignUp(data) {
     // TODO: real backend — call Firebase/Supabase createUser here and return a Promise.
     saveAccount(data.email, data.name);           // demo: remember name by email (no password)
+    // Capture the sign-up as a lead in Supabase (contact details only — NEVER the password).
+    if (window.ThisaiStore && window.ThisaiStore.configured()) {
+      try {
+        window.ThisaiStore.insert(window.ThisaiStore.normalize(
+          { name: data.name, phone: data.phone, email: data.email, page: document.title }, "signup"
+        )).catch(function () {}); // fire-and-forget: never block or break sign-up
+      } catch (e) {}
+    }
     return Promise.resolve({ name: data.name, email: data.email });
   }
   function doSignIn(data) {
