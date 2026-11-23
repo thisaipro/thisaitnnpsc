@@ -20,6 +20,7 @@
       "nav.home": "Home",
       "nav.group4": "Group 4 Exam",
       "nav.courses": "Courses & Test Series",
+      "nav.ca": "Current Affairs",
       "nav.why": "Why Thisai",
       "nav.blog": "News & Articles",
       "nav.contact": "Contact",
@@ -297,6 +298,17 @@
       "bp.cta.t": "Want current affairs on WhatsApp?",
       "bp.cta.d": "Join our broadcast for daily TNPSC/UPSC current affairs in Tamil and English.",
 
+      /* ---- current affairs page ---- */
+      "ca.bc": "Current Affairs",
+      "ca.title": "Daily Current Affairs",
+      "ca.sub": "TNPSC & UPSC current affairs in English and Tamil, updated daily by the Thisai team. National, Tamil Nadu, International, Economy, Science & Technology and more.",
+      "ca.loading": "Loading today's current affairs…",
+      "ca.empty": "No current affairs posted yet — fresh updates are coming daily. Join our WhatsApp broadcast in the meantime.",
+      "ca.more": "Load more",
+      "ca.cta.t": "Get current affairs on WhatsApp",
+      "ca.cta.d": "Join our broadcast for daily TNPSC/UPSC current affairs in Tamil and English.",
+      "ca.cta.btn": "Join the broadcast",
+
       /* ---- why page / contact page ---- */
       "wp.bc": "Why Thisai",
       "wp.title": "Why Thisai?",
@@ -323,6 +335,7 @@
       "nav.home": "முகப்பு",
       "nav.group4": "குரூப் 4 தேர்வு",
       "nav.courses": "பாடநெறிகள் & தேர்வுத் தொடர்",
+      "nav.ca": "நடப்பு நிகழ்வுகள்",
       "nav.why": "ஏன் திசை",
       "nav.blog": "செய்திகள் & கட்டுரைகள்",
       "nav.contact": "தொடர்பு",
@@ -579,6 +592,17 @@
       "bp.empty": "இன்னும் பதிவுகள் இல்லை — புதிய செய்திகள் & கட்டுரைகள் விரைவில். தினசரி நடப்பு நிகழ்வுகளுக்கு WhatsApp-இல் சேருங்கள்.",
       "bp.cta.t": "WhatsApp-இல் நடப்பு நிகழ்வுகள் வேண்டுமா?",
       "bp.cta.d": "தமிழ் & ஆங்கிலத்தில் தினசரி TNPSC/UPSC நடப்பு நிகழ்வுகளுக்கு எங்கள் ஒளிபரப்பில் சேருங்கள்.",
+
+      /* ---- current affairs page ---- */
+      "ca.bc": "நடப்பு நிகழ்வுகள்",
+      "ca.title": "தினசரி நடப்பு நிகழ்வுகள்",
+      "ca.sub": "திசை குழுவால் தினமும் புதுப்பிக்கப்படும் TNPSC & UPSC நடப்பு நிகழ்வுகள் — தமிழ் மற்றும் ஆங்கிலத்தில். தேசிய, தமிழ்நாடு, சர்வதேச, பொருளாதாரம், அறிவியல் & தொழில்நுட்பம் மற்றும் பல.",
+      "ca.loading": "இன்றைய நடப்பு நிகழ்வுகள் ஏற்றப்படுகிறது…",
+      "ca.empty": "இன்னும் நடப்பு நிகழ்வுகள் எதுவும் இடப்படவில்லை — தினசரி புதிய புதுப்பிப்புகள் வரும். அதுவரை எங்கள் WhatsApp ஒளிபரப்பில் சேருங்கள்.",
+      "ca.more": "மேலும் காட்டு",
+      "ca.cta.t": "WhatsApp-இல் நடப்பு நிகழ்வுகள் பெறுங்கள்",
+      "ca.cta.d": "தமிழ் & ஆங்கிலத்தில் தினசரி TNPSC/UPSC நடப்பு நிகழ்வுகளுக்கு எங்கள் ஒளிபரப்பில் சேருங்கள்.",
+      "ca.cta.btn": "ஒளிபரப்பில் சேர்",
 
       "wp.bc": "ஏன் திசை",
       "wp.title": "ஏன் திசை?",

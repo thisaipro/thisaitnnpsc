@@ -1,0 +1,46 @@
+[
+  {
+    "id": 4,
+    "ca_date": "2026-11-23",
+    "title_en": "57th International Film Festival of India (IFFI) under way in Goa",
+    "title_ta": "57வது இந்திய சர்வதேச திரைப்பட விழா (IFFI) கோவாவில் நடைபெறுகிறது",
+    "body_en": "The 57th edition of the International Film Festival of India (IFFI), the country's premier film festival organised by the Ministry of Information & Broadcasting with the NFDC, is being held in Goa.",
+    "body_ta": "தகவல் ஒளிபரப்பு அமைச்சகம் NFDC உடன் இணைந்து நடத்தும் நாட்டின் முதன்மை திரைப்பட விழாவான 57வது இந்திய சர்வதேச திரைப்பட விழா (IFFI) கோவாவில் நடைபெறுகிறது.",
+    "category": "Art & Culture",
+    "source": "Daily current-affairs roundups — verify with PIB",
+    "source_url": ""
+  },
+  {
+    "id": 3,
+    "ca_date": "2026-11-23",
+    "title_en": "First SCO Civilisational Dialogue Forum held in New Delhi",
+    "title_ta": "முதல் SCO நாகரிக உரையாடல் மன்றம் புதுடெல்லியில் நடைபெற்றது",
+    "body_en": "India hosted the first Shanghai Cooperation Organisation (SCO) Civilisational Dialogue Forum in New Delhi (20–22 November), which concluded with the adoption of the 'Indraprastha Communiqué'.",
+    "body_ta": "ஷாங்காய் ஒத்துழைப்பு அமைப்பின் (SCO) முதல் நாகரிக உரையாடல் மன்றத்தை இந்தியா புதுடெல்லியில் (நவ. 20–22) நடத்தியது; இது 'இந்திரப்பிரஸ்த அறிக்கை' ஏற்பதுடன் நிறைவடைந்தது.",
+    "category": "International",
+    "source": "Daily current-affairs roundups — verify with MEA / PIB",
+    "source_url": ""
+  },
+  {
+    "id": 2,
+    "ca_date": "2026-11-23",
+    "title_en": "National Career Service (NCS) ONE portal launched at Labour Ministers' Chintan Shivir",
+    "title_ta": "தொழிலாளர் அமைச்சர்கள் சிந்தன் ஷிவிரில் தேசிய தொழில் சேவை (NCS) ONE போர்டல் அறிமுகம்",
+    "body_en": "The Union Labour Ministry's Chintan Shivir concluded with the launch of the National Career Service (NCS) ONE portal, intended to bring employment and career services together on a single integrated platform.",
+    "body_ta": "மத்திய தொழிலாளர் அமைச்சகத்தின் சிந்தன் ஷிவிர், வேலைவாய்ப்பு மற்றும் தொழில் சேவைகளை ஒரே ஒருங்கிணைந்த தளத்தில் கொண்டுவரும் தேசிய தொழில் சேவை (NCS) ONE போர்டலின் அறிமுகத்துடன் நிறைவடைந்தது.",
+    "category": "Schemes / National",
+    "source": "PIB — verify",
+    "source_url": ""
+  },
+  {
+    "id": 1,
+    "ca_date": "2026-11-23",
+    "title_en": "COP31 climate talks in Antalya end without fossil-fuel consensus",
+    "title_ta": "அண்டால்யா COP31 காலநிலை பேச்சுவார்த்தை புதைபடிம எரிபொருள் ஒருமித்த முடிவின்றி நிறைவு",
+    "body_en": "The COP31 UN climate conference in Antalya, Türkiye, concluded after extended overtime without a consensus decision to move away from fossil fuels. The proposed cover text, informally called the 'Antalya Pact', omitted an explicit fossil-fuel transition, drawing objections led by the European Union.",
+    "body_ta": "துருக்கியின் அண்டால்யாவில் நடந்த COP31 ஐ.நா. காலநிலை மாநாடு, புதைபடிம எரிபொருள்களில் இருந்து விலகும் ஒருமித்த முடிவின்றி கூடுதல் நேரத்திற்குப் பின் நிறைவடைந்தது. 'அண்டால்யா ஒப்பந்தம்' என அழைக்கப்பட்ட வரைவில் எரிபொருள் மாற்றம் வெளிப்படையாக இடம்பெறவில்லை; ஐரோப்பிய ஒன்றியம் தலைமையில் எதிர்ப்பு எழுந்தது.",
+    "category": "Environment / International",
+    "source": "Daily current-affairs roundups — verify with UNFCCC / PIB",
+    "source_url": ""
+  }
+]
