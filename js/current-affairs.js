@@ -1,20 +1,17 @@
 /* ============================================================================
    Thisai IAS Academy — Current Affairs (current-affairs.html)
-   Reads published entries from Supabase (public key, read-only) and renders
-   them date-wise and bilingually. Re-renders on language change. No writes
-   happen here — new entries are added by the automated daily job.
+   Reads entries from the committed data file data/current-affairs.json and
+   renders them date-wise and bilingually. Re-renders on language change.
+   The file is updated by the automated daily job (which commits to Git);
+   Vercel redeploys and the new entries appear. No database or keys needed.
    ========================================================================== */
 (function () {
   "use strict";
   var $  = function (s, r) { return (r || document).querySelector(s); };
-  var CFG = window.THISAI_CONFIG || {};
-  var PAGE = 40;
-  var offset = 0, items = [], done = false, loading = false;
+  var SHOW = 40;        // how many render initially / per "load more"
+  var all = [], shown = 0;
 
   function lang() { return (window.ThisaiI18n && window.ThisaiI18n.getLang && window.ThisaiI18n.getLang()) || "en"; }
-  function configured() { return !!(CFG.SUPABASE_URL && CFG.SUPABASE_ANON_KEY); }
-  function restBase() { return String(CFG.SUPABASE_URL || "").replace(/\/+$/, "") + "/rest/v1/current_affairs"; }
-
   function esc(s) { return (s == null ? "" : String(s)).replace(/[&<>"']/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]; }); }
   function paras(txt) {
     return String(txt || "").split(/\n{1,}/).map(function (p) { return p.trim(); }).filter(Boolean)
@@ -29,8 +26,8 @@
   function render() {
     var list = $("[data-ca-list]"); if (!list) return;
     list.innerHTML = "";
-    var lastDate = null;
-    items.forEach(function (it) {
+    var slice = all.slice(0, shown), lastDate = null;
+    slice.forEach(function (it) {
       if (it.ca_date !== lastDate) {
         lastDate = it.ca_date;
         var h = document.createElement("h2"); h.className = "ca-date"; h.textContent = fmtDate(it.ca_date);
@@ -49,39 +46,32 @@
           : "");
       list.appendChild(card);
     });
-    var empty = $("[data-ca-empty]"); if (empty) empty.hidden = items.length !== 0;
-    var more = $("[data-ca-more]"); if (more) more.hidden = done || items.length === 0;
+    var empty = $("[data-ca-empty]"); if (empty) empty.hidden = all.length !== 0;
+    var more = $("[data-ca-more]"); if (more) more.hidden = shown >= all.length;
   }
 
-  function load() {
-    if (loading || done) return;
+  function sortDesc(a, b) {
+    if (a.ca_date !== b.ca_date) return (a.ca_date < b.ca_date) ? 1 : -1;
+    return (Number(b.id) || 0) - (Number(a.id) || 0);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
     var list = $("[data-ca-list]"); if (!list) return;
-    if (!configured()) { var e = $("[data-ca-empty]"); if (e) { e.hidden = false; } return; }
-    loading = true;
     var status = $("[data-ca-status]"); if (status) status.hidden = false;
-    var url = restBase() + "?select=*&order=ca_date.desc,created_at.desc&limit=" + PAGE + "&offset=" + offset;
-    fetch(url, { headers: { "apikey": CFG.SUPABASE_ANON_KEY, "Authorization": "Bearer " + CFG.SUPABASE_ANON_KEY } })
+    fetch("data/current-affairs.json?t=" + Date.now(), { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw 0; return r.json(); })
       .then(function (data) {
-        data = Array.isArray(data) ? data : [];
-        items = items.concat(data);
-        offset += data.length;
-        if (data.length < PAGE) done = true;
-        loading = false;
+        all = (Array.isArray(data) ? data : []).slice().sort(sortDesc);
+        shown = Math.min(SHOW, all.length);
         if (status) status.hidden = true;
         render();
       })
       .catch(function () {
-        loading = false; done = true;
         if (status) status.hidden = true;
-        var e = $("[data-ca-empty]"); if (e) e.hidden = items.length !== 0;
+        var e = $("[data-ca-empty]"); if (e) e.hidden = false;
       });
-  }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    if (!$("[data-ca-list]")) return;
-    load();
-    var more = $("[data-ca-more]"); if (more) more.addEventListener("click", load);
+    var more = $("[data-ca-more]"); if (more) more.addEventListener("click", function () { shown = Math.min(shown + SHOW, all.length); render(); });
     document.addEventListener("thisai:langchange", render);
   });
 })();
